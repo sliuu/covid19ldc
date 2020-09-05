@@ -7,6 +7,10 @@ const path = require("path");
 module.exports = withPlugins([[withSass], [withImages]], {
   webpack(config, options) {
     config.resolve.modules.push(path.resolve("./"));
+    config.module.rules.push({
+      test: /\.csv$/,
+      loader: 'raw-loader',
+    });
     return config;
   }
 });

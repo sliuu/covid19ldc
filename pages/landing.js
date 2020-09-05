@@ -22,6 +22,9 @@ import FemaleOwnedSection from "pages-sections/FemaleOwnedSection.js";
 import BusinessSectorsSection from "pages-sections/BusinessSectorsSection.js";
 import MapSection from "pages-sections/MapSection.js";
 
+import csv_string from 'example_data.csv';
+import Model from "model.js"
+
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
@@ -30,7 +33,7 @@ export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   const bg = chroma('red').alpha(0.2).hex();
-
+  const model = Model.from_csv_string(csv_string);
   return (
     <div>
       <Header
