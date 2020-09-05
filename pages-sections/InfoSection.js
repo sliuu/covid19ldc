@@ -13,7 +13,7 @@ const InfoSection = () => {
 	const classes = useStyles();
 	return (
     <div className={classes.section}>
-			<GridContainer justify="left">
+			<GridContainer justify="flex-start">
         <GridItem xs={12} sm={12} md={10}>
           <h3 className={classes.description}>
             Largest survey looking at the impact of Covid-19 on SMEs across
@@ -21,16 +21,40 @@ const InfoSection = () => {
 					  responses</b> collected from July 1 to August 21, 2020.
           </h3>
         </GridItem>
+			</GridContainer>
+			<GridContainer justify="flex-start">
+				<GridItem xs={12} sm={12} md={4}>
+					<hr/>
+				</GridItem>
+			</GridContainer>
+			<GridContainer justify="flex-start">
 				<GridItem xs={12} sm={12} md={10}>
 					<h3 className={classes.description}>
-						Will serve as a <b>baseline for SMEs in LDCs</b> to be able to track their progress and recovery in the future.
+						Will serve as a <b>baseline for SMEs in LDCs</b> to be able to track
+						their progress and recovery in the future.
 					</h3>
 				</GridItem>
+			</GridContainer>
+			<GridContainer justify="flex-start">
+				<GridItem xs={12} sm={12} md={4}>
+					<hr/>
+				</GridItem>
+			</GridContainer>
+			<GridContainer justify="flex-start">
 				<GridItem xs={12} sm={12} md={10}>
 					<h3 className={classes.description}>
-						Identify effectiveness of SME relief measures and establish <b>best practices and policy innovations</b> to help governments and stakeholders navigate Covid-19 and future disruptions.
+						Identify effectiveness of SME relief measures and establish <b>best
+						practices and policy innovations</b> to help governments and stakeholders
+						navigate Covid-19 and future disruptions.
 					</h3>
 				</GridItem>
+			</GridContainer>
+			<GridContainer justify="flex-start">
+				<GridItem xs={12} sm={12} md={4}>
+					<hr/>
+				</GridItem>
+			</GridContainer>
+			<GridContainer justify="flex-start">
 				<GridItem xs={12} sm={12} md={10}>
 					<h3 className={classes.description}>
 						Will help with planning, resource allocation, programme improvement,
