@@ -23,6 +23,15 @@ const handleClick = (e, countryCode) => {
   console.log(countryCode);
 };
 
+const toolTipCountry = (e, el, code) => {
+  if (!(code in mapData)) {
+    el.html(el.html()).css("z-index","-1");
+  } else {
+    el.css("z-index","11").css("fontSize","15px");
+    el.html('<b>' + el.html() + '</b>' + '</br>30 responses');
+  }
+};
+
 const { getCode, getName, getData } = require("country-list");
 const MapSection = () => {
 	const classes = useStyles();
@@ -36,27 +45,40 @@ const MapSection = () => {
           width: "100%",
           height: "700px"
         }}
-        onRegionClick={handleClick} //gets the country code
+        // onRegionClick={handleClick} //gets the country code
         containerClassName="map"
+        focusOn={{
+          x: 0.6,
+          y: 0.6,
+          scale: 2,
+          animate: true
+        }}
+        panOnDrag={true}
+        showTooltip={true}
         regionStyle={{
           initial: {
             fill: "#e4e4e4",
             "fill-opacity": 0.9,
-            stroke: "none",
+            //stroke: "none",
             "stroke-width": 0,
             "stroke-opacity": 0
-          },
-          hover: {
-            "fill-opacity": 0.8,
-            cursor: "pointer"
-          },
-          selected: {
-            fill: "#2938bc" //color for the clicked country
-          },
-          selectedHover: {}
+          }
+          // hover: {
+          //   "fill-opacity": 0.8,
+          //   cursor: "pointer"
+          // }
+          // selected: {
+          //   fill: "#2938bc" //color for the clicked country
+          // }
+          // selectedHover: {}
         }}
-        
-        regionsSelectable={true}
+        //onRegionTipShow={function(e, el, code){
+        //  el.html("fdsjfds");
+        //}}
+        // regionsSelectable={true}
+        onRegionTipShow={toolTipCountry}
+        //onRegionOver={toolTipCountry}
+        //onLabelShow={toolTipCountry}
         series={{
           regions: [
             {

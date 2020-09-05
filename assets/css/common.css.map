@@ -14,6 +14,7 @@
 		"../scss/core/_mixins.scss",
 		"../scss/core/mixins/_colored-shadows.scss",
 		"../scss/core/_misc.scss",
+		"../scss/pages/_map.scss",
 		"../scss/plugins/_plugin-nouislider.scss",
 		"../scss/plugins/_plugin-react-datetime.scss",
 		"../scss/plugins/_plugin-react-slick.scss"

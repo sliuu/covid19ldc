@@ -21,6 +21,7 @@ import styles from "assets/jss/common/pages/landingPage.js";
 import FemaleOwnedSection from "pages-sections/FemaleOwnedSection.js";
 import BusinessSectorsSection from "pages-sections/BusinessSectorsSection.js";
 import MapSection from "pages-sections/MapSection.js";
+import InfoSection from "pages-sections/InfoSection.js";
 
 const dashboardRoutes = [];
 
@@ -29,14 +30,14 @@ const useStyles = makeStyles(styles);
 export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
-  const bg = chroma('red').alpha(0.2).hex();
+  const bg = chroma('#01579b').alpha(0.6).hex();
 
   return (
     <div>
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        title="Covid-19 SME LDCs"
+        title="Covid-19 LDC Market Survey"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -48,14 +49,9 @@ export default function LandingPage(props) {
       <Parallax filter responsive color={bg}>
         <div className={classes.container}>
           <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>Covid-19 SME LDCs</h1>
-              <h4>
-                Every landing page needs a small description after the big bold
-                title, that{"'"}s why we added this text here. Add here all the
-                information that can make you or your product create the first
-                impression.
-              </h4>
+            <GridItem xs={12} sm={12} md={9}>
+              <h1 className={classes.title}>Impact of Covid-19 on SMEs in the LDC Markets</h1>
+
               <br />
             </GridItem>
           </GridContainer>
@@ -63,6 +59,7 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
+          <InfoSection />
           <MapSection />
           <BusinessSectorsSection />
           <FemaleOwnedSection />

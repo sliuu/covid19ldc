@@ -13,6 +13,7 @@ class MyDocument extends Document {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <meta name="theme-color" content="#000000" />
+          <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Rajdhani&display=swap" rel="stylesheet"/>
           <link
             rel="stylesheet"
             type="text/css"

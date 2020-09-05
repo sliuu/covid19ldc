@@ -56,6 +56,7 @@ const headerStyle = {
     ...defaultFont,
     lineHeight: "30px",
     fontSize: "18px",
+    fontFamily: 'Rajdhani',
     borderRadius: "3px",
     textTransform: "none",
     color: "inherit",
