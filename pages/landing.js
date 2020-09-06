@@ -33,7 +33,6 @@ export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   const bg = chroma('red').alpha(0.2).hex();
-  const model = Model.from_csv_string(csv_string);
   return (
     <div>
       <Header
@@ -68,7 +67,7 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <MapSection />
           <BusinessSectorsSection />
-          <FemaleOwnedSection />
+          <FemaleOwnedSection data={props.femown_counts}/>
         </div>
       </div>
       <Footer />
