@@ -23,9 +23,6 @@ import BusinessSectorsSection from "pages-sections/BusinessSectorsSection.js";
 import MapSection from "pages-sections/MapSection.js";
 import InfoSection from "pages-sections/InfoSection.js";
 
-import csv_string from 'example_data.csv';
-import Model from "model.js"
-
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);

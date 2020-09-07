@@ -13,7 +13,7 @@ import styles from "assets/jss/common/pages/sections/femaleOwnedStyle.js";
 
 const useStyles = makeStyles(styles);
 
-export default function WorkSection(props) {
+export default function FemaleOwnedSection(props) {
   const classes = useStyles();
   return (
     <div className={classes.section}>
