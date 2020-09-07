@@ -62,7 +62,7 @@ export default function LandingPage(props) {
           <InfoSection />
           <MapSection />
           <BusinessSectorsSection />
-          <FemaleOwnedSection />
+          <FemaleOwnedSection data={props.femown_counts}/>
         </div>
       </div>
       <Footer />
