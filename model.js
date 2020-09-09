@@ -6,38 +6,7 @@ import * as d3 from "d3";
 import { nest } from 'd3-collection';
 import Papa from "papaparse";
 
-const bizsector_codes = {
-  1: "Accommodation and catering",
-  2: "Agriculture, forestry, animal husbandry, fisheries",
-  3: "Construction industry",
-  4: "Culture, sports and entertainment",
-  5: "Education",
-  6: "Financial industry",
-  7: "Health and social work",
-  8: "Information transmission, software and information technology services",
-  9: "Leasing and business services",
-  10: "Manufacturing industry",
-  11: "Mining, oil and gas industry",
-  12: "Production and supply of electricity, heat, gas and water",
-  13: "Real estate industry",
-  14: "Residential services, repair and other services",
-  15: "Scientific research and technological services",
-  16: "Tourism",
-  17: "Transport, storage and postal industry",
-  18: "Water, environment and public facilities management",
-  19: "Wholesale and retail trade",
-  0: "Other",
-};
-
-const revchange_codes = {1: "+ >30%",
-                         2: "+ 10-30%",
-                         3: "+ <10%",
-                         4: "Neutral",
-                         5: "- <10%",
-                         6: "- 10-30%",
-                         7: "- >30%",
-                         8: "Neutral"};
-
+import { REVCHANGE_CODES, BIZSECTOR_CODES } from "helpers/surveycodes.js";
 
 export default class Model {
   constructor(all_data) {
@@ -68,8 +37,8 @@ export default class Model {
     // Groups rows by business sector and expected
     // revenue changes.
     let groups = d3.groups(this.all_data,
-      d => bizsector_codes[d.bizsector],
-      d => revchange_codes[d.revchange]);
+      d => BIZSECTOR_CODES[d.bizsector],
+      d => REVCHANGE_CODES[d.revchange]);
     for (let key1 of groups) {
       let obj = new Object();
       obj.name = key1[0];

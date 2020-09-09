@@ -116,8 +116,8 @@ export default function HorizontalBarChart(props) {
 	     .call(xAxis);
 	  chart.append("g")
 	     .call(yAxis)
-			 .selectAll(".tick text")
-		 	 .call(wrap, 200);
+       .selectAll(".tick text")
+       .call(wrap, 200);
 
    // Add legend.
 	 let x1 = d3.scaleLinear()
