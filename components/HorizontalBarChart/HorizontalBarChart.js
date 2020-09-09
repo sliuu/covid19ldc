@@ -6,9 +6,22 @@ import { keys } from 'd3-collection';
 
 const formatValue = x => isNaN(x) ? "N/A" : x.toLocaleString("en");
 const formatPercent = d3.format(".1%");
-const width = 550;
-const margin = ({top: 30, right: 10, bottom: 0, left: 100});
 
+let slices = ['- >30%', '- 10-30%', '- <10%',
+'Neutral', '+ <10%', '+ 10-30%', '+ >30%'];
+
+// Legend formatting.
+const tickSize = 0;
+const legendWidth = 350;
+const legendHeight = 44 + tickSize;
+const marginTop = 18;
+const marginRight = 0;
+const marginBottom = 16 + tickSize;
+const marginLeft = 0;
+const ticks = legendWidth / 64;
+const title = "Expected Revenue Change";
+
+// For wrapping text on the y-axis.
 function wrap(text, width) {
     text.each(function () {
         var text = d3.select(this),
@@ -32,32 +45,21 @@ function wrap(text, width) {
                 line.pop();
                 tspan.text(line.join(" "));
                 line = [word];
-								d3.select(this).attr("y", y-2)
+                d3.select(this).attr("y", y-2)
                 tspan = text.append("tspan")
-                            .attr("x", x)
-                            .attr("y", y)
-                            .attr("dy", ++lineNumber * lineHeight + dy + "em")
-                            .text(word);
+                  .attr("x", x)
+                  .attr("y", y)
+                  .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                  .text(word);
             }
         }
     });
 };
 
 export default function HorizontalBarChart(props) {
-	let slices = ['- >30%', '- 10-30%', '- <10%',
-								'Neutral', '+ <10%', '+ 10-30%',
-								'+ >30%'];
-
-	const height = props.data.length * 25 + margin.top + margin.bottom;
-	const tickSize = 0;
-	const legendWidth = 350;
-	const legendHeight = 44 + tickSize;
-	const marginTop = 18;
-	const marginRight = 0;
-	const marginBottom = 16 + tickSize;
-	const marginLeft = 0;
-	const ticks = legendWidth / 64;
-	const title = "Expected Revenue Change";
+  const width = 550;
+  const margin = ({top: 30, right: 10, bottom: 0, left: 100});
+  const height = props.data.length * 25 + margin.top + margin.bottom;
 
 	useEffect(() => {
 		let y = d3.scaleBand()
@@ -108,9 +110,7 @@ export default function HorizontalBarChart(props) {
 			   .attr("height", y.bandwidth())
 			 .append("title")
 			    .text(d => `${d.data.name} ${d.key}
-											${formatPercent(d[1] - d[0])}
-											(${formatValue(d.data[d.key])})`);
-
+            ${formatPercent(d[1] - d[0])} (${formatValue(d.data[d.key])})`);
 
 	  chart.append("g")
 	     .call(xAxis);
@@ -119,6 +119,7 @@ export default function HorizontalBarChart(props) {
 			 .selectAll(".tick text")
 		 	 .call(wrap, 200);
 
+   // Add legend.
 	 let x1 = d3.scaleLinear()
 	     .domain([-1, color.range().length - 1])
 	     .rangeRound([marginLeft, legendWidth - marginRight]);
