@@ -49,7 +49,7 @@ h3 {
   line-height: 1.4em;
 }
 h4 {
-  font-size: 1.125rem;
+  font-size: 1.225rem;
   line-height: 1.5em;
 }
 h5 {
@@ -123,4 +123,9 @@ img {
 }
 form {
   margin-bottom: 1.125rem;
+}
+text {
+  fill: $black-color;
+  stroke: $black-color;
+  font-family: "Rajdhani", "Helvetica", "Arial", sans-serif;
 }

@@ -14,7 +14,13 @@ const productStyle = {
   },
   description: {
     color: "#999"
-  }
+  },
+  x: {
+    stroke: "gray !important",
+  },
+  '.tick': {
+    fill: "black",
+  },
 };
 
 export default productStyle;

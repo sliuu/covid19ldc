@@ -40,7 +40,7 @@ export default function PageChange(props) {
           <CircularProgress className={classes.progress} />
         </div>
         <h4 className={classes.title}>
-          Loading page contents for: {props.path}
+          Loading ...
         </h4>
       </div>
     </div>

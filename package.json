@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
+    "dev": "NODE_OPTIONS='--inspect' next",
     "build": "next build",
     "start": "next start",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev"
@@ -28,6 +28,7 @@
     "classnames": "2.2.6",
     "country-list": "^2.2.0",
     "d3": "^6.1.1",
+    "d3-collection": "^1.0.7",
     "moment": "2.25.3",
     "next": "9.3.6",
     "next-compose-plugins": "2.2.0",
@@ -41,7 +42,7 @@
     "raw-loader": "^4.0.1",
     "react": "^16.13.1",
     "react-datetime": "2.16.3",
-    "react-dom": "16.13.1",
+    "react-dom": "^16.13.1",
     "react-jvectormap": "0.0.16",
     "react-slick": "0.25.2",
     "react-swipeable-views": "0.13.9",

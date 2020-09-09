@@ -61,7 +61,7 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <InfoSection />
           <MapSection />
-          <BusinessSectorsSection />
+          <BusinessSectorsSection data={props.revchange_x_bizsector}/>
           <FemaleOwnedSection data={props.femown_counts}/>
         </div>
       </div>
