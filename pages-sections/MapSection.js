@@ -16,7 +16,7 @@ const VectorMap = dynamic(
   { ssr: false, }
 );
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+/// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const { getCode, getName, getData } = require("country-list");
 
@@ -25,7 +25,7 @@ export default function MapSection(props) {
   const [showCountryCard, setShowCountryCard] = useState(false);
   const [country, setCountry] = useState("");
   const countryCardRef = useRef(null)
-  const executeScroll = () => scrollToRef(countryCardRef)
+  // const executeScroll = () => scrollToRef(countryCardRef)
 
   function handleClick(e, countryCode){
     setTimeout(()=> { Array.from(
@@ -33,7 +33,7 @@ export default function MapSection(props) {
       .forEach((el) => { el.style.display = 'none' }); },100);
     setShowCountryCard(true);
     setCountry(getName(countryCode));
-    executeScroll();
+    // executeScroll();
   }
 
   const toolTipCountry = (e, el, code) => {
@@ -49,9 +49,10 @@ export default function MapSection(props) {
       <div className={classes.section}>
         <GridContainer justify="center">
           <GridItem cs={12} sm={12} md={8}>
-            <h2 className={classes.title}>Countries</h2>
+            <h2 className={classes.title}>Countries Surveyed</h2>
             <h4 className={classes.description}>
-              More stuff
+              Highest number of responses from X <br/>
+              X Responses from Africa, etc.
             </h4>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={8}>
@@ -100,8 +101,8 @@ export default function MapSection(props) {
                     series={{
                       regions: [
                         {
-                          values: props.data, //this is your data
-                          scale: [chroma('#bbdefb').hex(), chroma('#303f9f').darken(1).hex()], //your color game's here
+                          values: props.data,
+                          scale: ['#b2ebf2', '#0277bd'],
                           normalizeFunction: "polynomial"
                         }
                       ]
@@ -112,7 +113,7 @@ export default function MapSection(props) {
                     display: showCountryCard ? "block" : "none"}}>
                 <GridItem xs={12} sm={12} md={8}>
                   <h2 className={classes.title}>{ country }</h2>
-                  <div ref={countryCardRef}>hi</div>
+                  <div ref={countryCardRef}></div>
                 </GridItem>
               </div>
               </GridContainer>
