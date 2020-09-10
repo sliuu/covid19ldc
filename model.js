@@ -7,6 +7,7 @@ import { nest } from 'd3-collection';
 import Papa from "papaparse";
 
 import { REVCHANGE_CODES, BIZSECTOR_CODES } from "helpers/surveycodes.js";
+import { COUNTRY_CODES } from "helpers/countrycodes.js";
 
 export default class Model {
   constructor(all_data) {
@@ -65,6 +66,16 @@ export default class Model {
       return 0;
     });
     return list;
+  }
+
+  get_country_counts() {
+    var counts = {};
+    let groups = d3.groups(this.all_data,
+      d => COUNTRY_CODES[d.country]);
+    for (let key of groups) {
+      counts[key[0]] = key[1].length;
+    }
+    return counts;
   }
 
   static from_csv_string(csv_string) {

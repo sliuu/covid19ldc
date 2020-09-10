@@ -51,7 +51,6 @@ export default function LandingPage(props) {
           <GridContainer>
             <GridItem xs={12} sm={12} md={9}>
               <h1 className={classes.title}>Impact of Covid-19 on SMEs in the LDC Markets</h1>
-
               <br />
             </GridItem>
           </GridContainer>
@@ -60,7 +59,7 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <InfoSection />
-          <MapSection />
+          <MapSection data={props.country_counts}/>
           <BusinessSectorsSection data={props.revchange_x_bizsector}/>
           <FemaleOwnedSection data={props.femown_counts}/>
         </div>
