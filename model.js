@@ -6,7 +6,7 @@ import * as d3 from "d3";
 import { nest } from 'd3-collection';
 import Papa from "papaparse";
 
-import { REVCHANGE_CODES, BIZSECTOR_CODES, CHALLENGES_CODES_SHORT, CHALLENGES_KEYS, TIME_OPEN_CODES } from "helpers/surveycodes.js";
+import { REVCHANGE_CODES, BIZSECTOR_CODES, CHALLENGES_CODES_SHORT, CHALLENGES_KEYS, TIME_OPEN_CODES, FEMPERC_CODES } from "helpers/surveycodes.js";
 import { COUNTRY_CODES } from "helpers/countrycodes.js";
 
 export default class Model {
@@ -31,6 +31,25 @@ export default class Model {
   	  }
   	});
   	return femown_counts;
+  }
+
+  get_femperc_counts() {
+    const femperc_counts_dict = {"1": 0, "2": 0, "3": 0, "4": 0};
+    this.all_data.map(object => {
+      const number = object["femperc"];
+      if (number in femperc_counts_dict) {
+        femperc_counts_dict[number] += 1;
+      }
+    });
+
+    let femperc_counts = [];
+    for (let key in FEMPERC_CODES) {
+      femperc_counts.push({
+        name: FEMPERC_CODES[key],
+        value: femperc_counts_dict[key.toString()]
+      })
+    }
+    return femperc_counts;
   }
 
   get_revchange_bizsector_rollup() {
