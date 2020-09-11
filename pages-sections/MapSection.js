@@ -19,7 +19,7 @@ const VectorMap = dynamic(
   { ssr: false, }
 );
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetBottom);// ref.current.offsetTop);
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);// ref.current.offsetTop);
 
 const { getCode, getName, getData } = require("country-list");
 
@@ -119,9 +119,9 @@ export default function MapSection(props) {
               <GridContainer justify="center">
                   <div style={{
                       display: showCountryCard ? "block" : "none"}}>
+                      <div ref={ countryCardRef }/>
                     <CountryCard country={ country } countryCode={ countryCode } countrychallenges={ props.countrychallenges } countrycounts={ props.countrycounts } countrytimeopen={ props.countrytimeopen }/>
                   </div>
-                  <div ref={ countryCardRef }/>
               </GridContainer>
           </GridItem>
         </GridContainer>
