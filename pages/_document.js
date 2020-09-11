@@ -1,5 +1,6 @@
 import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
+import Link from "next/link";
 import { ServerStyleSheets } from "@material-ui/styles";
 
 class MyDocument extends Document {
