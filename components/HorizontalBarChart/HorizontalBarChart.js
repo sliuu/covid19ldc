@@ -58,7 +58,7 @@ function wrap(text, width) {
 
 export default function HorizontalBarChart(props) {
   const width = 550;
-  const margin = ({top: 30, right: 10, bottom: 0, left: 100});
+  const margin = ({top: 30, right: 10, bottom: 0, left: 50});
   const height = props.data.length * 25 + margin.top + margin.bottom;
 
 	useEffect(() => {
@@ -119,7 +119,7 @@ export default function HorizontalBarChart(props) {
        .selectAll(".tick text")
        .call(wrap, 200);
 
-   // Add legend.
+   // Add legend
 	 let x1 = d3.scaleLinear()
 	     .domain([-1, color.range().length - 1])
 	     .rangeRound([marginLeft, legendWidth - marginRight]);
@@ -165,8 +165,10 @@ export default function HorizontalBarChart(props) {
   });
 
 	return (
-		      <div> <svg className={"f"} id="legend" width={legendWidth} height={legendHeight} /><br/>
-	        <svg className={"horizontalBarChart"} id="svg" width={width} height={height} /> </div>
+		   <div>
+          <svg className={"f"} id="legend" width={legendWidth} height={legendHeight} /> <br/>
+	        <svg className={"horizontalBarChart"} id="svg" width={width} height={height} />
+        </div>
 	    );
 
 };

@@ -34,7 +34,10 @@ export default class MyApp extends App {
                       femown_counts: model.get_femown_counts(),
                       femperc_counts: model.get_femperc_counts(),
                       submission_dates: model.get_submission_dates(),
-                      revchange_x_bizsector: model.get_revchange_bizsector_rollup()
+                      revchange_x_bizsector: model.get_revchange_bizsector_rollup(),
+                      country_counts: model.get_country_counts(),
+                      country_x_challenges: model.get_country_challenges_rollup(),
+                      country_x_timeopen: model.get_country_timeopen_rollup(),
                     };
     return { pageProps };
   }

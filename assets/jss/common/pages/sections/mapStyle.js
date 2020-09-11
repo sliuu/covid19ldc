@@ -13,7 +13,7 @@ const mapStyle = {
     textAlign: "center"
   },
   description: {
-    color: "#999",
+    color: "#3c4858",
     textAlign: "center"
   },
   textCenter: {
