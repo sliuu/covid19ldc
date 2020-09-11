@@ -8,7 +8,8 @@
     "dev": "NODE_OPTIONS='--inspect' next",
     "build": "next build",
     "start": "next start",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev",
+    "deploy": "next build && next export -o docs && git checkout -- docs/.nojekyll && git add docs && git commit -m \"chore: regen site\" && git push origin master"
   },
   "repository": {
     "type": "git",
