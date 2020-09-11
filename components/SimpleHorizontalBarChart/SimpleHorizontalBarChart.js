@@ -38,17 +38,19 @@ export default function HorizontalBarChart(props) {
     return 0;
   });
 
-  const width = 500;
-  const margin = ({top: 30, right: 50, bottom: 0, left: 20});
+  const width = 800;
+  const margin = ({top: 0, right: 50, bottom: 0, left: 100});
   const height = data.length * 30 + margin.top + margin.bottom;
 
   for (let row of data) {
     row.value /= total;
   }
+  console.log(data)
 
 	useEffect(() => {
-
-    const chart = d3.select("#svg")
+		d3.select(`#svg${props.id}`)
+			.selectAll("*").remove();
+    const chart = d3.select(`#svg${props.id}`)
 			.attr("width", width)
 			.attr("height", height)
       .style("display", "auto");
@@ -56,6 +58,7 @@ export default function HorizontalBarChart(props) {
 			 .style("overflow", "visible");
 
     let	x = d3.scaleLinear()
+      .domain([0,1])
       .range([margin.left, width - margin.right]);
     chart.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -76,7 +79,7 @@ export default function HorizontalBarChart(props) {
 	    .enter()
 	    .append("rect")
 	    .attr("x", x(0) )
-	    .attr("width", function(d) { return x(d.value); })
+	    .attr("width", function(d) { return x(d.value) - x(0); })
       .attr("y", function(d) { return y(d.key); })
 	    .attr("height", y.bandwidth() )
 	    .attr("fill", "#69b3a2")
@@ -84,7 +87,7 @@ export default function HorizontalBarChart(props) {
 
 	return (
     <div>
-      <svg className={"horizontalBarChart"} id="svg" width={width} height={height} />
+      <svg className={"horizontalBarChart"} id={"svg"+props.id} width={width} height={height} />
     </div>
 	    );
 

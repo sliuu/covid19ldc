@@ -6,7 +6,7 @@ import * as d3 from "d3";
 import { nest } from 'd3-collection';
 import Papa from "papaparse";
 
-import { REVCHANGE_CODES, BIZSECTOR_CODES, CHALLENGES_CODES_SHORT, CHALLENGES_KEYS } from "helpers/surveycodes.js";
+import { REVCHANGE_CODES, BIZSECTOR_CODES, CHALLENGES_CODES_SHORT, CHALLENGES_KEYS, TIME_OPEN_CODES } from "helpers/surveycodes.js";
 import { COUNTRY_CODES } from "helpers/countrycodes.js";
 
 export default class Model {
@@ -92,6 +92,26 @@ export default class Model {
         }
         dict[country][challenge_name] += parseInt(row[challenge]);
       }
+      if (!("total" in dict[country])) {
+        dict[country]["total"] = 0;
+      }
+      dict[country]["total"] += 1;
+    }
+    return dict;
+  }
+
+  get_country_timeopen_rollup() {
+    var dict = {};
+    for (let row of this.all_data) {
+      const country = COUNTRY_CODES[row.country];
+      if (!(country in dict)) {
+        dict[country] = {};
+      }
+      const code_name = TIME_OPEN_CODES[row.timeopen];
+      if (!(code_name in dict[country])) {
+        dict[country][code_name] = 0;
+      }
+      dict[country][code_name] += 1;
       if (!("total" in dict[country])) {
         dict[country]["total"] = 0;
       }

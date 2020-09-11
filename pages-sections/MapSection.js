@@ -9,6 +9,8 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import SimpleHorizontalBarChart from "components/SimpleHorizontalBarChart/SimpleHorizontalBarChart.js";
 
+import CountryCard from "pages-sections/CountryCard.js";
+
 import styles from "assets/jss/common/pages/sections/mapStyle.js";
 const useStyles = makeStyles(styles);
 
@@ -113,16 +115,13 @@ export default function MapSection(props) {
                     }}
                   />
                 </GridItem>
-                <div style={{
-                    display: showCountryCard ? "block" : "none"}}>
-                <GridItem xs={12} sm={12} md={12}>
-                  <h2 className={classes.title}>{ country }</h2>
-                  <div className={classes.description}>{ props.countrycounts[countryCode] } Responses </div>
-                  <div ref={countryCardRef}>
-                    <SimpleHorizontalBarChart data={ props.countrychallenges } countrycode={ countryCode }/>
+              </GridContainer>
+              <GridContainer justify="center">
+                  <div style={{
+                      display: showCountryCard ? "block" : "none"}}>
+                    <CountryCard country={ country } countryCode={ countryCode } countrychallenges={ props.countrychallenges } countrycounts={ props.countrycounts } countrytimeopen={ props.countrytimeopen }/>
                   </div>
-                </GridItem>
-              </div>
+                  <div ref={ countryCardRef }/>
               </GridContainer>
           </GridItem>
         </GridContainer>

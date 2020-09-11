@@ -69,3 +69,11 @@ export const CHALLENGES_KEYS = [
   "challenge_cap",
   "challenge_none",
 ];
+
+export const TIME_OPEN_CODES = {
+  1: "< 2 Weeks",
+  2: "2-4 Weeks",
+  3: "1-3 Months",
+  4: "3-6 Months",
+  5: "> 6 Months"
+};

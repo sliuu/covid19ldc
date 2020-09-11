@@ -36,6 +36,7 @@ export default class MyApp extends App {
                       revchange_x_bizsector: model.get_revchange_bizsector_rollup(),
                       country_counts: model.get_country_counts(),
                       country_x_challenges: model.get_country_challenges_rollup(),
+                      country_x_timeopen: model.get_country_timeopen_rollup(),
                     };
     return { pageProps };
   }

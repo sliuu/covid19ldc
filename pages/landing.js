@@ -59,7 +59,7 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <InfoSection />
-          <MapSection countrycounts={props.country_counts} countrychallenges={props.country_x_challenges}/>
+          <MapSection countrycounts={props.country_counts} countrychallenges={props.country_x_challenges} countrytimeopen={ props.country_x_timeopen}/>
           <BusinessSectorsSection data={props.revchange_x_bizsector}/>
           <FemaleOwnedSection data={props.femown_counts}/>
         </div>

@@ -58,7 +58,7 @@ function wrap(text, width) {
 
 export default function HorizontalBarChart(props) {
   const width = 550;
-  const margin = ({top: 30, right: 10, bottom: 0, left: 100});
+  const margin = ({top: 30, right: 10, bottom: 0, left: 50});
   const height = props.data.length * 25 + margin.top + margin.bottom;
 
 	useEffect(() => {
@@ -165,8 +165,10 @@ export default function HorizontalBarChart(props) {
   });
 
 	return (
-		      <div> <svg className={"f"} id="legend" width={legendWidth} height={legendHeight} /><br/>
-	        <svg className={"horizontalBarChart"} id="svg" width={width} height={height} /> </div>
+		      <div>
+            <svg className={"f"} id="legend" width={legendWidth} height={legendHeight} /> <br/>
+	        <svg className={"horizontalBarChart"} id="svg" width={width} height={height} />
+        </div>
 	    );
 
 };
