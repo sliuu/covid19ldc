@@ -26,7 +26,7 @@ export default function BusinessSectorsSection(props) {
           </h5>
         </GridItem>
       </GridContainer>
-      <div>
+      <div className={classes.section}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={12}>
             <HorizontalBarChart data={props.data}/>
