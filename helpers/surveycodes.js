@@ -30,3 +30,10 @@ export const REVCHANGE_CODES = {
 	6: "- 10-30%",
 	7: "- >30%",
 	8: "Neutral"};
+
+export const FEMPERC_CODES = {
+  1: "Less than half",
+  2: "About half",
+  3: "More than half",
+  4: "I don’t know"
+};

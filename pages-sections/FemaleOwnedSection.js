@@ -13,6 +13,7 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import TabPanel from "components/TabPanel/TabPanel.js";
 import PieChart from "components/PieChart/PieChart.js";
+import LollipopChart from "components/LollipopChart/LollipopChart.js";
 
 import styles from "assets/jss/common/pages/sections/femaleOwnedStyle.js";
 
@@ -46,11 +47,10 @@ export default function FemaleOwnedSection(props) {
             <Tab label="Percentage of Female Staff" {...a11yProps(2)} />
           </Tabs>
           <TabPanel value={value} index={0}>
-            Item One
-            <PieChart data={props.data}/>
+            <PieChart data={props.femown_counts}/>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Item Three
+            <LollipopChart data={props.femperc_counts}/>
           </TabPanel>
           <form>
             <GridContainer>
