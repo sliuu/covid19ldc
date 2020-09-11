@@ -119,7 +119,7 @@ export default function HorizontalBarChart(props) {
        .selectAll(".tick text")
        .call(wrap, 200);
 
-   // Add legend.
+   // Add legend
 	 let x1 = d3.scaleLinear()
 	     .domain([-1, color.range().length - 1])
 	     .rangeRound([marginLeft, legendWidth - marginRight]);
