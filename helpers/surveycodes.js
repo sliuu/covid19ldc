@@ -31,6 +31,13 @@ export const REVCHANGE_CODES = {
 	7: "- >30%",
 	8: "Neutral"};
 
+export const FEMPERC_CODES = {
+  1: "Less than half",
+  2: "About half",
+  3: "More than half",
+  4: "I don’t know"
+};
+
 export const CHALLENGES_CODES = {
 	"challenge_cust": "Difficulties in accessing customers due to mobility restrictions and/or loss in demand",
 	"challenge_supp": "Difficulties in accessing suppliers due to mobility restrictions imposed by government",

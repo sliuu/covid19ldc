@@ -61,7 +61,7 @@ export default function LandingPage(props) {
           <InfoSection />
           <MapSection countrycounts={props.country_counts} countrychallenges={props.country_x_challenges} countrytimeopen={ props.country_x_timeopen}/>
           <BusinessSectorsSection data={props.revchange_x_bizsector}/>
-          <FemaleOwnedSection data={props.femown_counts}/>
+          <FemaleOwnedSection femown_counts={props.femown_counts} femperc_counts={props.femperc_counts}/>
         </div>
       </div>
       <Footer />

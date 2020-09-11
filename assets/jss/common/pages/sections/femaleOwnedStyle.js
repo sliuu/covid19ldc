@@ -23,6 +23,9 @@ const teamStyle = {
   description: {
     color: "#999"
   },
+  tabs: {
+    backgroundColor: "#33B2FF"
+  },
   justifyCenter: {
     justifyContent: "center !important"
   },
