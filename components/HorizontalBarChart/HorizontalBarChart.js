@@ -165,8 +165,8 @@ export default function HorizontalBarChart(props) {
   });
 
 	return (
-		      <div>
-            <svg className={"f"} id="legend" width={legendWidth} height={legendHeight} /> <br/>
+		   <div>
+          <svg className={"f"} id="legend" width={legendWidth} height={legendHeight} /> <br/>
 	        <svg className={"horizontalBarChart"} id="svg" width={width} height={height} />
         </div>
 	    );

@@ -45,7 +45,6 @@ export default function HorizontalBarChart(props) {
   for (let row of data) {
     row.value /= total;
   }
-  console.log(data)
 
 	useEffect(() => {
 		d3.select(`#svg${props.id}`)
@@ -74,7 +73,7 @@ export default function HorizontalBarChart(props) {
       .call(d3.axisLeft(y))
       .attr("transform", `translate(${margin.left},0)`);
 
-		chart.selectAll("myRect")
+    chart.selectAll("myRect")
 	    .data(data)
 	    .enter()
 	    .append("rect")
