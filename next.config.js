@@ -4,8 +4,7 @@ const withSass = require("@zeit/next-sass");
 const webpack = require("webpack");
 const path = require("path");
 
-const debug = process.env.NODE_ENV !== 'production';
-//const assetPrefix = debug ? '' : '/covid19ldc/';
+const assetPrefix = process.env.NODE_ENV !== 'production' ? '' : '/covid19ldc/';
 
 module.exports = withPlugins([[withSass], [withImages]], {
   webpack(config, options) {
@@ -16,6 +15,6 @@ module.exports = withPlugins([[withSass], [withImages]], {
     });
     return config;
   },
-  assetPrefix: '/covid19ldc',
-  basePath: '/covid19ldc',
+  assetPrefix: assetPrefix,
+  basePath: assetPrefix,
 });
