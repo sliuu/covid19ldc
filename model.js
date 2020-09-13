@@ -70,20 +70,19 @@ export default class Model {
     // Sorts from largest negative decreases
     // to largest positive increases.
     list = list.sort(function(a, b) {
-      let a_sub = a['- >30%'] + a['- 10-30%'] + a['- <10%'];
-      let b_sub = b['- >30%'] + b['- 10-30%'] + b['- <10%'];
-      let a_all = a['- >30%'] + a['- 10-30%'] + a['- <10%'] +
-                  a['Neutral'] + a['+ >30%'] + a['+ 10-30%'] + a['+ <10%'];
-      let b_all = b['- >30%'] + b['- 10-30%'] + b['- <10%'] +
-                  b['Neutral'] + b['+ >30%'] + b['+ 10-30%'] + b['+ <10%'];
-      if ((a_sub / a_all) > (b_sub / b_all)) {
+      let a_sub = a['- >30%'] + a['- 10-30%'] + ('- <10%' in a ? a['- <10%'] : 0);
+      let b_sub = b['- >30%'] + b['- 10-30%'] + ('- <10%' in b ? b['- <10%'] : 0);
+      let a_all = a['- >30%'] + a['- 10-30%'] + ('- <10%' in a ? a['- <10%'] : 0) + a['Neutral'] + a['+ >30%'] + a['+ 10-30%'] + ('+ <10%' in a ? a['+ <10%'] : 0);
+      let b_all = b['- >30%'] + b['- 10-30%'] + ('- <10%' in b ? b['- <10%'] : 0) + b['Neutral'] + b['+ >30%'] + b['+ 10-30%'] + ('+ <10%' in b ? b['+ <10%'] : 0);
+      if ((a_sub / parseFloat(a_all)) > (b_sub / parseFloat(b_all))) {
         return -1;
       }
-      if ((a_sub / a_all) < (b_sub / b_all)) {
+      if ((a_sub / parseFloat(a_all)) < (b_sub / parseFloat(b_all))) {
         return 1;
       }
       return 0;
     });
+
     return list;
   }
 

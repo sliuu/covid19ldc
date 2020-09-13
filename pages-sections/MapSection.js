@@ -19,7 +19,7 @@ const VectorMap = dynamic(
   { ssr: false, }
 );
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetBottom);// ref.current.offsetTop);
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetBottom);
 
 const { getCode, getName, getData } = require("country-list");
 
@@ -65,13 +65,13 @@ export default function MapSection(props) {
                 <GridItem xs={12} sm={12} md={12}>
                   <VectorMap
                     map={"world_mill"}
-                    backgroundColor="transparent" //change it to ocean blue: #0077be
+                    backgroundColor="transparent"
                     zoomOnScroll={false}
                     containerStyle={{
                       width: "100%",
                       height: "700px"
                     }}
-                    onRegionClick={handleClick} //gets the country code
+                    onRegionClick={handleClick}
                     containerClassName="map"
                     focusOn={{
                       x: 0.6,
@@ -85,25 +85,14 @@ export default function MapSection(props) {
                       initial: {
                         fill: "#e4e4e4",
                         "fill-opacity": 0.9,
-                        //stroke: "none",
                         "stroke-width": 0,
                         "stroke-opacity": 0
+                      },
+                      hover: {
+                         cursor: "pointer"
                       }
-                      // hover: {
-                      //    cursor: "auto"
-                      // }
-                      // selected: {
-                      //   fill: "#2938bc" //color for the clicked country
-                      // }
-                      // selectedHover: {}
                     }}
-                    //onRegionTipShow={function(e, el, code){
-                    //  el.html("fdsjfds");
-                    //}}
-                    // regionsSelectable={true}
                     onRegionTipShow={toolTipCountry}
-                    //onRegionOver={toolTipCountry}
-                    //onLabelShow={toolTipCountry}
                     series={{
                       regions: [
                         {
@@ -116,13 +105,13 @@ export default function MapSection(props) {
                   />
                 </GridItem>
               </GridContainer>
+              <div style={{
+                  display: showCountryCard ? "block" : "none"}}>
               <GridContainer justify="center">
-                  <div style={{
-                      display: showCountryCard ? "block" : "none"}}>
                     <CountryCard country={ country } countryCode={ countryCode } countrychallenges={ props.countrychallenges } countrycounts={ props.countrycounts } countrytimeopen={ props.countrytimeopen }/>
-                  </div>
-                  <div ref={ countryCardRef }/>
               </GridContainer>
+                  <div ref={ countryCardRef }/>
+            </div>
           </GridItem>
         </GridContainer>
       </div>
