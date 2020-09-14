@@ -50,17 +50,15 @@ export default function HorizontalBarChart(props) {
 		d3.select(`#svg${props.id}`)
 			.selectAll("*").remove();
     const chart = d3.select(`#svg${props.id}`)
-			.attr("width", width)
-			.attr("height", height)
-      .style("display", "auto");
-    chart.attr("viewBox", [0, 0, width, height])
-			 .style("overflow", "visible");
-
+			.attr("viewBox", [0, 0, width, height])
+      .style("display", "auto")
+      .style("overflow", "visible");
     let	x = d3.scaleLinear()
       .domain([0,1])
       .range([margin.left, width - margin.right]);
     chart.append("g")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform",
+        "translate(" + 0 + "," + height + ")")
       .call(d3.axisBottom(x).ticks(width / 100, "%"))
       .selectAll("text")
       .attr("transform", "translate(-10,0)rotate(-45)")
@@ -86,7 +84,7 @@ export default function HorizontalBarChart(props) {
 
 	return (
     <div>
-      <svg className={"horizontalBarChart"} id={"svg"+props.id} width={width} height={height} />
+      <svg className={"horizontalBarChart"} id={"svg"+props.id} viewBox={[0, 0, width, height]}/>
     </div>
 	    );
 
