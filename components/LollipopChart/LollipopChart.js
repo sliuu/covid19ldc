@@ -10,8 +10,7 @@ export default function LollipopChart(props) {
     // append the svg object to the body of the page
     let svg = d3.select("#femperc_svg")
       .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", [0, 0, width + margin.left + margin.right, height + margin.top + margin.bottom])
       .append("g")
         .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");

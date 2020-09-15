@@ -36,11 +36,13 @@ export default function MapSection(props) {
     setTimeout(()=> { Array.from(
       document.getElementsByClassName("jvectormap-tip"))
       .forEach((el) => { el.style.display = 'none' }); },100);
-    setShowCountryCard(true);
-    setCountry(getName(code));
-    setCountryCode(code);
-    if (countryCardRef.current !== null)
-        countryCardRef.current.scrollIntoView({ block: 'end', behavior: 'smooth' });
+    if (props.countrycounts[code] > 9) {
+      setShowCountryCard(true);
+      setCountry(getName(code));
+      setCountryCode(code);
+      if (countryCardRef.current !== null)
+          countryCardRef.current.scrollIntoView({ block: 'end', behavior: 'smooth' });
+    }
   }
 
   const toolTipCountry = (e, el, code) => {
@@ -58,8 +60,7 @@ export default function MapSection(props) {
           <GridItem cs={12} sm={12} md={12}>
             <h2 className={classes.title}>Countries Surveyed</h2>
             <h4 className={classes.description}>
-              Highest number of responses from X <br/>
-              X Responses from Africa, etc.
+              {"Note: Country-specific information for countries with < 10 responses are not shown for privacy reasons."}
             </h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={12}>
@@ -104,11 +105,13 @@ export default function MapSection(props) {
                     }}
                   />
                 </GridItem>
+                <GridItem xs={12} sm={12} md={12}>
+                </GridItem> 
               </GridContainer>
               <div style={{
                   display: showCountryCard ? "block" : "none"}}>
               <GridContainer justify="center">
-                    <CountryCard country={ country } countryCode={ countryCode } countrychallenges={ props.countrychallenges } countrycounts={ props.countrycounts } countrytimeopen={ props.countrytimeopen }/>
+                    <CountryCard country={ country } countryCode={ countryCode } countrychallenges={ props.countrychallenges } countrycounts={ props.countrycounts } countrytimeopen={ props.countrytimeopen } countryrevchange={ props.countryrevchange }/>
               </GridContainer>
                   <div ref={ countryCardRef }/>
             </div>

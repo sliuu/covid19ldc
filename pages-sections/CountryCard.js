@@ -18,7 +18,10 @@ export default function CountryCard(props) {
           <h2 className={classes.title}>{ props.country }</h2>
           <div className={classes.description}>{ props.countrycounts[props.countryCode] } Responses </div>
         </GridItem>
-
+        <GridItem xs={12} sm={12} md={12}>
+            <h3 className={classes.title}>Expected Revenue Change</h3>
+            <SimpleHorizontalBarChart data={ props.countryrevchange } countrycode={ props.countryCode } id="revChange"/>
+        </GridItem>
         <GridItem xs={12} sm={12} md={12}>
 					  <h3 className={classes.title}>Most Critical Business Challenges Reported</h3>
             <SimpleHorizontalBarChart data={ props.countrychallenges } countrycode={ props.countryCode } id="challenges"/> <br/>

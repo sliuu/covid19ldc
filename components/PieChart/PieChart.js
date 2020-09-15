@@ -12,7 +12,7 @@ export default function PieChart(props) {
   const pie = d3.pie()(values);
 
   return (
-    <svg height={height} width={width}>
+    <svg viewBox={[0, 0, width, height]}>
       <g transform={`translate(${width / 2},${height / 2})`}>
         <Slice pie={pie} />
       </g>

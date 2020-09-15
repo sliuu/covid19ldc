@@ -38,6 +38,7 @@ export default class MyApp extends App {
                       country_counts: model.get_country_counts(),
                       country_x_challenges: model.get_country_challenges_rollup(),
                       country_x_timeopen: model.get_country_timeopen_rollup(),
+                      country_x_revchange: model.get_country_revchange_rollup(),
                     };
     return { pageProps };
   }

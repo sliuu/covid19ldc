@@ -84,7 +84,7 @@ export default class Model {
       }
       return 0;
     });
-
+    console.log(list)
     return list;
   }
 
@@ -132,6 +132,30 @@ export default class Model {
         dict[country][code_name] = 0;
       }
       dict[country][code_name] += 1;
+      if (!("total" in dict[country])) {
+        dict[country]["total"] = 0;
+      }
+      dict[country]["total"] += 1;
+    }
+    return dict;
+  }
+
+  get_country_revchange_rollup() {
+    var dict = {};
+    for (let row of this.all_data) {
+      const country = COUNTRY_CODES[row.country];
+      if (!(country in dict)) {
+        dict[country] = {};
+      }
+      for (let idx in REVCHANGE_CODES) {
+        const revchange = REVCHANGE_CODES[idx];
+        if (!(revchange in dict[country])) {
+          dict[country][revchange] = 0;
+        }
+      }
+      if (row.revchange in REVCHANGE_CODES) {
+        dict[country][REVCHANGE_CODES[row.revchange]] += 1;
+      }
       if (!("total" in dict[country])) {
         dict[country]["total"] = 0;
       }
