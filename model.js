@@ -56,8 +56,9 @@ export default class Model {
     var list = [];
     // Groups rows by business sector and expected
     // revenue changes.
+    //console.log(this.all_data[bizsector2])
     let groups = d3.groups(this.all_data,
-      d => BIZSECTOR_CODES[d.bizsector],
+      d => d.bizsector2,
       d => REVCHANGE_CODES[d.revchange]);
     for (let key1 of groups) {
       let obj = new Object();
@@ -66,6 +67,7 @@ export default class Model {
         obj[key2[0]] = key2[1].length;
       }
       list.push(obj);
+      console.log(obj.name);
     }
     // Sorts from largest negative decreases
     // to largest positive increases.
