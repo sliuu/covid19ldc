@@ -75,7 +75,7 @@ export default function HorizontalBarChart(props) {
     let mousemove = function(event, d) {
       tooltip
         .text(d.key + ": " + d.value.toFixed(2))
-                .style("transform", `translate(${event.offsetX}px, ${event.offsetY - 3*height/4}px)`)
+                .style("transform", `translate(${event.offsetX}px, ${event.offsetY - chart.node().getBoundingClientRect().height}px)`)
         .style("visibility", "visible");
     }
     let mouseleave = function(d) {
