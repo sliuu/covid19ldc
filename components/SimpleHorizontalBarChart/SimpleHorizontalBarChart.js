@@ -85,7 +85,7 @@ export default function HorizontalBarChart(props) {
         .style("visibility", "hidden");
     }
 
-    let	x = d3.scaleLinear()
+    let x = d3.scaleLinear()
       .domain([0,1])
       .range([margin.left, width - margin.right]);
 
