@@ -91,8 +91,7 @@ export default function HorizontalBarChart(props) {
 			.unknown("#ccc");
 
     const chart = d3.select("#svg")
-			.attr("width", width)
-      .attr("height", height)
+      .attr("viewBox", [0, 0, width, height])
       .style("display", "auto");
 		chart.attr("viewBox", [0, 0, width, height])
 			 .style("overflow", "visible");
@@ -126,8 +125,6 @@ export default function HorizontalBarChart(props) {
 
 	 const thresholds = color.domain();
 	 const legend = d3.select("#legend")
-	     .attr("width", legendWidth)
-       .attr("height", legendHeight)
        .attr("viewBox", [0, 0, legendWidth, legendHeight])
        .style("overflow", "visible")
        .style("display", "auto");
@@ -165,10 +162,11 @@ export default function HorizontalBarChart(props) {
   });
 
 	return (
-		   <div>
-          <svg className={"f"} id="legend" width={legendWidth} height={legendHeight} /> <br/>
-	        <svg className={"horizontalBarChart"} id="svg" width={width} height={height} />
-        </div>
+		<div>
+		  <svg className={"f"} id="legend" viewBox={[0, 0, legendWidth, legendHeight]}/>
+		  <br/>
+		  <svg className={"horizontalBarChart"} id="svg" viewBox={[0, 0, width, height]}/>
+		</div>
 	    );
 
 };
