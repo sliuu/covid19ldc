@@ -38,7 +38,7 @@ export default function FemaleOwnedSection(props) {
     <div className={classes.section}>
       <GridContainer justify="center">
         <GridItem cs={12} sm={12} md={8}>
-          <h2 className={classes.title}>Female-Owned Businesses</h2>
+          <h2 className={classes.title}>Business Profiles</h2>
           <h4 className={classes.description}>
             LDC SME profiles are unique in having a strong presence of female-owned and female-led businesses.
           </h4>
