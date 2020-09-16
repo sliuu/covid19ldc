@@ -26,10 +26,33 @@ function a11yProps(index) {
   };
 }
 
-export default function FemaleOwnedSection(props) {
+
+const FemaleOwnedSubSection = props => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  return (
+    <div>
+      <Tabs className={classes.tabs} value={value} onChange={handleChange} aria-label="simple tabs example" centered>
+      <Tab label="Female Owner and Board Member Presence" {...a11yProps(0)} />
+      <Tab label="Percentage of Female Staff" {...a11yProps(2)} />
+      </Tabs>
+      <TabPanel value={value} index={0}>
+        <PieChart data={props.femown_counts}/>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <LollipopChart data={props.femperc_counts}/>
+      </TabPanel>
+    </div>
+  )
+}
 
+export default function BusinessProfilesSection(props) {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+  console.log(props);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -42,16 +65,7 @@ export default function FemaleOwnedSection(props) {
           <h4 className={classes.description}>
             LDC SME profiles are unique in having a strong presence of female-owned and female-led businesses.
           </h4>
-          <Tabs className={classes.tabs} value={value} onChange={handleChange} aria-label="simple tabs example" centered>
-            <Tab label="Female Owner and Board Member Presence" {...a11yProps(0)} />
-            <Tab label="Percentage of Female Staff" {...a11yProps(2)} />
-          </Tabs>
-          <TabPanel value={value} index={0}>
-            <PieChart data={props.femown_counts}/>
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <LollipopChart data={props.femperc_counts}/>
-          </TabPanel>
+          <FemaleOwnedSubSection femown_counts={props.femown_counts} femperc_counts={props.femperc_counts} />
           <form>
             <GridContainer>
               <GridItem xs={12} sm={12} md={6}>
