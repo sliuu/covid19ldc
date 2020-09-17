@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import * as d3 from "d3";
 
 export default function LollipopChart(props) {
-  let margin = {top: 0, right: 30, bottom: 30, left: 100};
+  let margin = {top: 0, right: 30, bottom: 30, left: 150};
   let width = 460 - margin.left - margin.right;
   let height = 400 - margin.top - margin.bottom;
 
   useEffect(() => {
     // append the svg object to the body of the page
-    let svg = d3.select("#femperc_svg")
+    let svg = d3.select(`#${props.id}`)
       .append("svg")
         .attr("viewBox", [0, 0, width + margin.left + margin.right, height + margin.top + margin.bottom])
       .append("g")
@@ -69,6 +69,6 @@ export default function LollipopChart(props) {
       .attr("x1", function(d) { return x(d.value); })
   })
   return (
-    <div id={"femperc_svg"}></div>
+    <div id={props.id}></div>
   )
 }
