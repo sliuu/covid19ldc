@@ -29,7 +29,27 @@ export const REVCHANGE_CODES = {
 	5: "- <10%",
 	6: "- 10-30%",
 	7: "- >30%",
-	8: "Neutral"};
+	8: "Neutral"
+};
+
+export const BIZSTATUS_CODES = {
+  1: "Sole proprietorship",
+  2: "Partnership or Limited Partnership",
+  3: "Cooperation",
+  4: "Branch of foreign legal entities and partnerships",
+  5: "Informal business",
+  6: "Unknown",
+  0: "Other"
+};
+
+export const NUMEMPLOY_CODES = {
+  1: "Less than 10",
+  2: "11-50",
+  3: "51-100",
+  4: "101-250",
+  5: "251-499",
+  6: "More than 500",
+};
 
 export const FEMPERC_CODES = {
   1: "Less than half",
