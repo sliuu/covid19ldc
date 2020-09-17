@@ -36,7 +36,7 @@ export const BIZSTATUS_CODES = {
   1: "Sole proprietorship",
   2: "Partnership or Limited Partnership",
   3: "Cooperation",
-  4: "Branch of foreign legal entities and partnerships",
+  4: "Foreign legal entity branch",
   5: "Informal business",
   6: "Unknown",
   0: "Other"
