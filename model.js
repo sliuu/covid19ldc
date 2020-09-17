@@ -6,7 +6,14 @@ import * as d3 from "d3";
 import { nest } from 'd3-collection';
 import Papa from "papaparse";
 
-import { REVCHANGE_CODES, BIZSECTOR_CODES, CHALLENGES_CODES_SHORT, CHALLENGES_KEYS, TIME_OPEN_CODES, FEMPERC_CODES } from "helpers/surveycodes.js";
+import { REVCHANGE_CODES,
+  BIZSECTOR_CODES,
+  BIZSTATUS_CODES,
+  NUMEMPLOY_CODES,
+  CHALLENGES_CODES_SHORT,
+  CHALLENGES_KEYS,
+  TIME_OPEN_CODES,
+  FEMPERC_CODES } from "helpers/surveycodes.js";
 import { COUNTRY_CODES } from "helpers/countrycodes.js";
 
 export default class Model {
@@ -35,21 +42,17 @@ export default class Model {
 
   get_femperc_counts() {
     const femperc_counts_dict = {"1": 0, "2": 0, "3": 0, "4": 0};
-    this.all_data.map(object => {
-      const number = object["femperc"];
-      if (number in femperc_counts_dict) {
-        femperc_counts_dict[number] += 1;
-      }
-    });
+    return this._get_counts_list_for_feature("femperc", femperc_counts_dict, FEMPERC_CODES);
+  }
 
-    let femperc_counts = [];
-    for (let key in FEMPERC_CODES) {
-      femperc_counts.push({
-        name: FEMPERC_CODES[key],
-        value: femperc_counts_dict[key.toString()]
-      })
-    }
-    return femperc_counts;
+  get_bizstatus_counts() {
+    const bizstatus_counts_dict = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "0": 0};
+    return this._get_counts_list_for_feature("bizstatus", bizstatus_counts_dict, BIZSTATUS_CODES);
+  }
+
+  get_numemploy_counts() {
+    const numemploy_counts_dict = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0};
+    return this._get_counts_list_for_feature("numeploy", numemploy_counts_dict, NUMEMPLOY_CODES);
   }
 
   get_revchange_bizsector_rollup() {
@@ -171,5 +174,23 @@ export default class Model {
       skipEmptyLines: true
     });
    	return new Model(parsed_result.data);
+  }
+
+  _get_counts_list_for_feature(feature_name, empty_counts_dict, survey_codes_dict) {
+    this.all_data.map(object => {
+      const number = object["femperc"];
+      if (number in empty_counts_dict) {
+        empty_counts_dict[number] += 1;
+      }
+    });
+
+    let feature_counts = [];
+    for (let key in survey_codes_dict) {
+      feature_counts.push({
+        name: survey_codes_dict[key],
+        value: empty_counts_dict[key.toString()]
+      })
+    }
+    return feature_counts;
   }
 }

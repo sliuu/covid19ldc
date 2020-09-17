@@ -18,7 +18,7 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "assets/jss/common/pages/landingPage.js";
 
 // Sections for this page
-import FemaleOwnedSection from "pages-sections/FemaleOwnedSection.js";
+import BusinessProfilesSection from "pages-sections/BusinessProfilesSection.js";
 import BusinessSectorsSection from "pages-sections/BusinessSectorsSection.js";
 import MapSection from "pages-sections/MapSection.js";
 import InfoSection from "pages-sections/InfoSection.js";
@@ -31,7 +31,6 @@ export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   const bg = chroma('#01579b').alpha(0.6).hex();
-
   return (
     <div>
       <Header
@@ -59,9 +58,13 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <InfoSection />
-          <MapSection countrycounts={props.country_counts} countrychallenges={props.country_x_challenges} countrytimeopen={props.country_x_timeopen} countryrevchange={props.country_x_revchange}/>
+          <BusinessProfilesSection
+            femown_counts={props.femown_counts}
+            femperc_counts={props.femperc_counts}
+            bizstatus_counts={props.bizstatus_counts}
+            numemploy_counts={props.numemploy_counts}/>
+          <MapSection countrycounts={props.country_counts} countrychallenges={props.country_x_challenges} countrytimeopen={ props.country_x_timeopen}/>
           <BusinessSectorsSection data={props.revchange_x_bizsector}/>
-          <FemaleOwnedSection femown_counts={props.femown_counts} femperc_counts={props.femperc_counts}/>
         </div>
       </div>
       <Footer />

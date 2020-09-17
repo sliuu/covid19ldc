@@ -15,9 +15,9 @@ const tickSize = 0;
 const legendWidth = 350;
 const legendHeight = 44 + tickSize;
 const marginTop = 18;
-const marginRight = 0;
+const marginRight = 30;
 const marginBottom = 16 + tickSize;
-const marginLeft = 0;
+const marginLeft = 72;
 const ticks = legendWidth / 64;
 const title = "Expected Revenue Change";
 
@@ -57,8 +57,8 @@ function wrap(text, width) {
 };
 
 export default function HorizontalBarChart(props) {
-    const width = 550;
-  	const margin = ({top: 30, right: 10, bottom: 0, left: 50});
+    const width = 500;
+  	const margin = ({top: 30, right: 40, bottom: 0, left: 50});
   	const height = props.data.length * 25 + margin.top + margin.bottom;
 
 	useEffect(() => {
@@ -91,7 +91,7 @@ export default function HorizontalBarChart(props) {
 			.unknown("#ccc");
 
     	const chart = d3.select("#svg")
-      		.attr("viewBox", [0, 0, width, height])
+      		.attr("viewBox", [-60, 0, width + margin.right, height])
       		.style("display", "auto");
 		chart.append("g")
 			.selectAll("g")
@@ -123,14 +123,12 @@ export default function HorizontalBarChart(props) {
 
 	 	const thresholds = color.domain();
 	 	const legend = d3.select("#legend")
-	     	.attr("width", legendWidth)
-       		.attr("height", legendHeight)
        		.attr("viewBox", [0, 0, legendWidth, legendHeight])
-       		.style("overflow", "visible")
        		.style("display", "auto");
 	 	let tickFormat;
-	 	const thresholdFormat = tickFormat === undefined ? d => d :
-      	typeof tickFormat === "string" ? d3.format(tickFormat) : tickFormat;
+	 	const thresholdFormat = tickFormat === undefined ? 
+	 		d => d : typeof tickFormat === "string" ?
+	 				 d3.format(tickFormat) : tickFormat;
 
 	 	legend.append("g")
 		 	.selectAll("rect")
@@ -146,7 +144,7 @@ export default function HorizontalBarChart(props) {
 	 	tickFormat = i => thresholdFormat(thresholds[i], i);
 
 		legend.append("g")
-    		.attr("transform", `translate(-27, ${legendHeight - marginBottom})`)
+    		.attr("transform", `translate(-20, ${legendHeight - marginBottom})`)
     		.call(d3.axisBottom(x1)
       		.ticks(ticks, typeof tickFormat === "string" ? tickFormat : undefined)
       		.tickFormat(typeof tickFormat === "function" ? tickFormat : undefined)
@@ -154,7 +152,7 @@ export default function HorizontalBarChart(props) {
       		.tickValues(tickValues))
     		.call(g => g.select(".domain").remove())
     		.call(g => g.append("text")
-			.attr("x", marginLeft + 27)
+			.attr("x", marginLeft + 20)
       		.attr("y", marginTop + marginBottom - legendHeight - 6)
       		.attr("text-anchor", "start")
       		.text(title));
@@ -164,7 +162,7 @@ export default function HorizontalBarChart(props) {
 		<div>
 		  <svg className={"f"} id="legend" viewBox={[0, 0, legendWidth, legendHeight]}/>
 		  <br/>
-		  <svg className={"horizontalBarChart"} id="svg" viewBox={[0, 0, width, height]}/>
+		  <svg className={"horizontalBarChart"} id="svg" viewBox={[-60, 0, width, height]}/>
 		</div>
 	    );
 
