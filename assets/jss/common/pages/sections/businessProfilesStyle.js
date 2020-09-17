@@ -1,6 +1,6 @@
 import { cardTitle, title } from "assets/jss/common.js";
 
-const teamStyle = {
+const businessProfilesStyle = {
   section: {
     padding: "70px 0",
     textAlign: "center"
@@ -45,4 +45,4 @@ const teamStyle = {
   }
 };
 
-export default teamStyle;
+export default businessProfilesStyle;
