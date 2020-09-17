@@ -8,7 +8,43 @@ import { CHALLENGES_CODES_SHORT } from 'helpers/surveycodes.js';
 const formatValue = x => isNaN(x) ? "N/A" : x.toLocaleString("en");
 const formatPercent = d3.format(".1%");
 
-export default function HorizontalBarChart(props) {
+// For wrapping text on the y-axis.
+function wrap(text, width) {
+    text.each(function () {
+        var text = d3.select(this),
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            x = text.attr("x"),
+            y = text.attr("y"),
+            dy = 0, //parseFloat(text.attr("dy")),
+            tspan = text.text(null)
+                        .append("tspan")
+                        .attr("x", x)
+                        .attr("y", y)
+                        .attr("dy", dy + "em");
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                d3.select(this).attr("y", y-2)
+                tspan = text.append("tspan")
+                  .attr("x", x)
+                  .attr("y", y)
+                  .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                  .text(word);
+            }
+        }
+    });
+};
+
+export default function SimpleHorizontalBarChart(props) {
+  
   if (props.countrycode === "") {
     return <div></div>;
   }
@@ -39,8 +75,8 @@ export default function HorizontalBarChart(props) {
   });
 
   const width = 800;
-  const margin = ({top: 0, right: 50, bottom: 0, left: 100});
-  const height = data.length * 30 + margin.top + margin.bottom;
+  const margin = ({top: 0, right: 50, bottom: 0, left: 150});
+  const height = data.length * 40 + margin.top + margin.bottom;
 
   for (let row of data) {
     row.value /= total;
@@ -85,6 +121,11 @@ export default function HorizontalBarChart(props) {
         .style("visibility", "hidden");
     }
 
+    const color = d3.scaleOrdinal()
+      .domain(data.map(function(d) { return d.key; }))
+      .range(d3.quantize(d3.interpolateHcl("#60c96e", "#4d4193"), data.map(function(d) { return d.key; }).length))
+      .unknown("#ccc");
+
     let x = d3.scaleLinear()
       .domain([0,1])
       .range([margin.left, width - margin.right]);
@@ -94,7 +135,8 @@ export default function HorizontalBarChart(props) {
       .call(d3.axisBottom(x).ticks(width / 100, "%"))
       .selectAll("text")
       .attr("transform", "translate(-10,0)rotate(-45)")
-      .style("text-anchor", "end");
+      .style("text-anchor", "end")
+      .attr("font-size", '1.5em');
 
     let y = d3.scaleBand()
       .domain(data.map(function(d) { return d.key; }))
@@ -103,7 +145,10 @@ export default function HorizontalBarChart(props) {
 
     chart.append("g")
       .call(d3.axisLeft(y))
-      .attr("transform", `translate(${margin.left},0)`);
+      .attr("transform", `translate(${margin.left},0)`)
+      .selectAll(".tick text")
+      .attr("font-size", '1.5em')
+      .call(wrap, 300);
 
     chart.selectAll("myRect")
 	    .data(data)
@@ -113,7 +158,8 @@ export default function HorizontalBarChart(props) {
 	    .attr("width", function(d) { return x(d.value) - x(0); })
       .attr("y", function(d) { return y(d.key); })
 	    .attr("height", y.bandwidth() )
-	    .attr("fill", "#69b3a2")
+	    //.attr("fill", "#69b3a2")
+      .attr("fill", d => color(d.key))
       .on("mouseover", mouseover )
       .on("mousemove", mousemove )
       .on("mouseleave", mouseleave );

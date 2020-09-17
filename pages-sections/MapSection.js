@@ -33,16 +33,18 @@ export default function MapSection(props) {
   const executeScroll = () => scrollToRef(countryCardRef);
 
   function handleClick(e, code){
-    setTimeout(()=> { Array.from(
-      document.getElementsByClassName("jvectormap-tip"))
-      .forEach((el) => { el.style.display = 'none' }); },100);
-    if (props.countrycounts[code] > 9) {
-      setShowCountryCard(true);
-      setCountry(getName(code));
+    if (code in props.countrycounts) {
       setCountryCode(code);
-      if (countryCardRef.current !== null)
-          countryCardRef.current.scrollIntoView({ block: 'end', behavior: 'smooth' });
-    }
+      setCountry(getName(code));
+      setTimeout(()=> { Array.from(
+        document.getElementsByClassName("jvectormap-tip"))
+        .forEach((el) => { el.style.display = 'none' }); },100);
+      if (props.countrycounts[code] > 9) {
+        setShowCountryCard(true);
+        if (countryCardRef.current !== null)
+            countryCardRef.current.scrollIntoView({ block: 'end', behavior: 'smooth' });
+      }
+    } 
   }
 
   const toolTipCountry = (e, el, code) => {
@@ -111,7 +113,13 @@ export default function MapSection(props) {
               <div style={{
                   display: showCountryCard ? "block" : "none"}}>
               <GridContainer justify="center">
-                    <CountryCard country={ country } countryCode={ countryCode } countrychallenges={ props.countrychallenges } countrycounts={ props.countrycounts } countrytimeopen={ props.countrytimeopen } countryrevchange={ props.countryrevchange }/>
+                    <CountryCard country={ country }
+                                 countryCode={ countryCode }
+                                 countrychallenges={ props.countrychallenges }
+                                 countrycounts={ props.countrycounts }
+                                 countrytimeopen={ props.countrytimeopen }
+                                 countryrevchange={ props.countryrevchange }
+                                 countrygovtsupport={ props.countrygovtsupport }/>
               </GridContainer>
                   <div ref={ countryCardRef }/>
             </div>

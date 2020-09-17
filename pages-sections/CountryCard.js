@@ -20,7 +20,7 @@ export default function CountryCard(props) {
         </GridItem>
         <GridItem xs={12} sm={12} md={12}>
             <h3 className={classes.title}>Expected Revenue Change</h3>
-            <SimpleHorizontalBarChart data={ props.countryrevchange } countrycode={ props.countryCode } id="revChange"/>
+            <SimpleHorizontalBarChart data={ props.countryrevchange } countrycode={ props.countryCode } id="revChange"/> <br/>
         </GridItem>
         <GridItem xs={12} sm={12} md={12}>
 					  <h3 className={classes.title}>Most Critical Business Challenges Reported</h3>
@@ -28,7 +28,11 @@ export default function CountryCard(props) {
         </GridItem>
         <GridItem xs={12} sm={12} md={12}>
 						<h3 className={classes.title}>Expected Timeframe Businesses Predict Being Able to Stay Open</h3>
-            <SimpleHorizontalBarChart data={ props.countrytimeopen } countrycode={ props.countryCode } id="timeOpen"/>
+            <SimpleHorizontalBarChart data={ props.countrytimeopen } countrycode={ props.countryCode } id="timeOpen"/> <br/>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={12}>
+            <h3 className={classes.title}>Support Received from the Government to Mitigate the Impact of COVID-19</h3>
+            <SimpleHorizontalBarChart data={ props.countrygovtsupport } countrycode={ props.countryCode } id="govtSupport"/> <br/>
         </GridItem>
 			</div>
   );

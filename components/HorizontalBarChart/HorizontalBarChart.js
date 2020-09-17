@@ -21,41 +21,6 @@ const marginLeft = 72;
 const ticks = legendWidth / 64;
 const title = "Expected Revenue Change";
 
-// For wrapping text on the y-axis.
-function wrap(text, width) {
-    text.each(function () {
-        var text = d3.select(this),
-            words = text.text().split(/\s+/).reverse(),
-            word,
-            line = [],
-            lineNumber = 0,
-            lineHeight = 1.1, // ems
-            x = text.attr("x"),
-            y = text.attr("y"),
-            dy = 0, //parseFloat(text.attr("dy")),
-            tspan = text.text(null)
-                        .append("tspan")
-                        .attr("x", x)
-                        .attr("y", y)
-                        .attr("dy", dy + "em");
-        while (word = words.pop()) {
-            line.push(word);
-            tspan.text(line.join(" "));
-            if (tspan.node().getComputedTextLength() > width) {
-                line.pop();
-                tspan.text(line.join(" "));
-                line = [word];
-                d3.select(this).attr("y", y-2)
-                tspan = text.append("tspan")
-                  .attr("x", x)
-                  .attr("y", y)
-                  .attr("dy", ++lineNumber * lineHeight + dy + "em")
-                  .text(word);
-            }
-        }
-    });
-};
-
 export default function HorizontalBarChart(props) {
     const width = 500;
   	const margin = ({top: 30, right: 40, bottom: 0, left: 50});
@@ -89,10 +54,10 @@ export default function HorizontalBarChart(props) {
 			.domain(slices)
 			.range(d3.schemeSpectral[slices.length])
 			.unknown("#ccc");
-
     	const chart = d3.select("#svg")
       		.attr("viewBox", [-60, 0, width + margin.right, height])
-      		.style("display", "auto");
+      		.style("display", "auto")
+	        .style("overflow", "visible");
 		chart.append("g")
 			.selectAll("g")
 			.data(series)
@@ -112,9 +77,8 @@ export default function HorizontalBarChart(props) {
 	  	chart.append("g")
 	     	.call(xAxis);
 	  	chart.append("g")
-	     	.call(yAxis)
-       		.selectAll(".tick text")
-       		.call(wrap, 200);
+	     	.call(yAxis);
+       		
 
    		// Add legend
 	 	let x1 = d3.scaleLinear()

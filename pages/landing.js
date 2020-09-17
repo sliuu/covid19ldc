@@ -63,7 +63,11 @@ export default function LandingPage(props) {
             femperc_counts={props.femperc_counts}
             bizstatus_counts={props.bizstatus_counts}
             numemploy_counts={props.numemploy_counts}/>
-          <MapSection countrycounts={props.country_counts} countrychallenges={props.country_x_challenges} countrytimeopen={ props.country_x_timeopen}/>
+          <MapSection countrycounts={props.country_counts}
+                      countrychallenges={props.country_x_challenges}
+                      countrytimeopen={ props.country_x_timeopen}
+                      countryrevchange={props.country_x_revchange}
+                      countrygovtsupport={props.country_x_govtsupport}/>
           <BusinessSectorsSection data={props.revchange_x_bizsector}/>
         </div>
       </div>

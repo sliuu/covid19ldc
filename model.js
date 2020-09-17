@@ -13,7 +13,9 @@ import { REVCHANGE_CODES,
   CHALLENGES_CODES_SHORT,
   CHALLENGES_KEYS,
   TIME_OPEN_CODES,
-  FEMPERC_CODES } from "helpers/surveycodes.js";
+  FEMPERC_CODES,
+  GOVT_SUPPORT_CODES,
+  GOVT_SUPPORT_KEYS } from "helpers/surveycodes.js";
 import { COUNTRY_CODES } from "helpers/countrycodes.js";
 
 export default class Model {
@@ -114,6 +116,28 @@ export default class Model {
           dict[country][challenge_name] = 0;
         }
         dict[country][challenge_name] += parseInt(row[challenge]);
+      }
+      if (!("total" in dict[country])) {
+        dict[country]["total"] = 0;
+      }
+      dict[country]["total"] += 1;
+    }
+    return dict;
+  }
+
+  get_country_govtsupport_rollup() {
+    var dict = {};
+    for (let row of this.all_data) {
+      const country = COUNTRY_CODES[row.country];
+      if (!(country in dict)) {
+        dict[country] = {};
+      }
+      for (let support of GOVT_SUPPORT_KEYS) {
+        const support_name = GOVT_SUPPORT_CODES[support];
+        if (!(support_name in dict[country])) {
+          dict[country][support_name] = 0;
+        }
+        dict[country][support_name] += parseInt(row[support]);
       }
       if (!("total" in dict[country])) {
         dict[country]["total"] = 0;
