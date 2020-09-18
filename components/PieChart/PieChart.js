@@ -5,8 +5,8 @@ export default function PieChart(props) {
   const height = 400;
   const width = 400;
   var labels = Object.keys(props.data);
-  var values = labels.map(function(key){
-      return props.data[key];
+  var values = labels.map(function (key) {
+    return props.data[key];
   });
 
   const pie = d3.pie()(values);
@@ -18,15 +18,12 @@ export default function PieChart(props) {
       </g>
     </svg>
   );
-};
+}
 
-const Slice = props => {
+const Slice = (props) => {
   let { pie } = props;
 
-  let arc = d3
-    .arc()
-    .innerRadius(0)
-    .outerRadius(100);
+  let arc = d3.arc().innerRadius(0).outerRadius(100);
 
   let interpolate = d3.interpolateRgb("#eaaf79", "#bc3358");
 

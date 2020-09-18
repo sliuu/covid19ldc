@@ -17,11 +17,11 @@ export default function Footer(props) {
   const { whiteFont } = props;
   const footerClasses = classNames({
     [classes.footer]: true,
-    [classes.footerWhiteFont]: whiteFont
+    [classes.footerWhiteFont]: whiteFont,
   });
   const aClasses = classNames({
     [classes.a]: true,
-    [classes.footerWhiteFont]: whiteFont
+    [classes.footerWhiteFont]: whiteFont,
   });
   return (
     <footer className={footerClasses}>
@@ -29,38 +29,22 @@ export default function Footer(props) {
         <div className={classes.left}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href=""
-                className={classes.block}
-                target="_blank"
-              >
+              <a href="" className={classes.block} target="_blank">
                 1
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href=""
-                className={classes.block}
-                target="_blank"
-              >
+              <a href="" className={classes.block} target="_blank">
                 A
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href=""
-                className={classes.block}
-                target="_blank"
-              >
+              <a href="" className={classes.block} target="_blank">
                 B
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href=""
-                className={classes.block}
-                target="_blank"
-              >
+              <a href="" className={classes.block} target="_blank">
                 C
               </a>
             </ListItem>
@@ -72,5 +56,5 @@ export default function Footer(props) {
 }
 
 Footer.propTypes = {
-  whiteFont: PropTypes.bool
+  whiteFont: PropTypes.bool,
 };

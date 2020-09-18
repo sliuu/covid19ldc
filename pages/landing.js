@@ -30,7 +30,7 @@ const useStyles = makeStyles(styles);
 export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
-  const bg = chroma('#01579b').alpha(0.6).hex();
+  const bg = chroma("#01579b").alpha(0.6).hex();
   return (
     <div>
       <Header
@@ -41,7 +41,7 @@ export default function LandingPage(props) {
         fixed
         changeColorOnScroll={{
           height: 400,
-          color: "white"
+          color: "white",
         }}
         {...rest}
       />
@@ -49,7 +49,9 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={9}>
-              <h1 className={classes.title}>Impact of Covid-19 on SMEs in the LDC Markets</h1>
+              <h1 className={classes.title}>
+                Impact of Covid-19 on SMEs in the LDC Markets
+              </h1>
               <br />
             </GridItem>
           </GridContainer>
@@ -62,13 +64,16 @@ export default function LandingPage(props) {
             femown_counts={props.femown_counts}
             femperc_counts={props.femperc_counts}
             bizstatus_counts={props.bizstatus_counts}
-            numemploy_counts={props.numemploy_counts}/>
-          <MapSection countrycounts={props.country_counts}
-                      countrychallenges={props.country_x_challenges}
-                      countrytimeopen={ props.country_x_timeopen}
-                      countryrevchange={props.country_x_revchange}
-                      countrygovtsupport={props.country_x_govtsupport}/>
-          <BusinessSectorsSection data={props.revchange_x_bizsector}/>
+            numemploy_counts={props.numemploy_counts}
+          />
+          <MapSection
+            countrycounts={props.country_counts}
+            countrychallenges={props.country_x_challenges}
+            countrytimeopen={props.country_x_timeopen}
+            countryrevchange={props.country_x_revchange}
+            countrygovtsupport={props.country_x_govtsupport}
+          />
+          <BusinessSectorsSection data={props.revchange_x_bizsector} />
         </div>
       </div>
       <Footer />
