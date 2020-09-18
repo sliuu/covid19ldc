@@ -72,14 +72,14 @@ export const CHALLENGES_CODES = {
 };
 
 export const CHALLENGES_CODES_SHORT = {
-	"challenge_cust": "Customer/Demand Access Difficulties",
-	"challenge_supp": "Supplier Access Difficulties",
-	"challenge_equip": "Difficulties in Keeping Equipment Operating",
-	"challenge_input": "Supply Chain/Logistics Disruption",
-	"challenge_work": "Employee Absenteeism Difficulties",
-	"challenge_fin": "Financial Access Difficulties",
-	"challenge_fam": "Family Care Disruptions",
-	"challenge_cap": "Depreciation of Productive Capital Due to Inactivity",
+	"challenge_cust": "Customer/Demand Access",
+	"challenge_supp": "Supplier Access",
+	"challenge_equip": "Keeping Equipment Operating",
+	"challenge_input": "Supply Chain Disruption",
+	"challenge_work": "Employee Absenteeism",
+	"challenge_fin": "Financial Access",
+	"challenge_fam": "Family Care",
+	"challenge_cap": "Depreciation of Capital",
 	"challenge_none": "No Challenges",
 	"challenge_other": "Other",
 };
@@ -104,3 +104,34 @@ export const TIME_OPEN_CODES = {
   4: "3-6 Months",
   5: "> 6 Months"
 };
+
+export const GOVT_SUPPORT_CODES = {
+  "govtsupport_bizloan": "Business Loans/Guarantees",
+  "govtsupport_deffloan": "Loan Payment Defferals",
+  "govtsupport_salsub": "Partial/Total Salary Subsidies",
+  "govtsupport_rentsub": "Rental/Utilities Subsidies",
+  "govtsupport_rentdeff": "Rental/Utitilies Deferalls",
+  "govtsupport_techhelp": "Training/Technical Assistance",
+  "govtsupport_servsub": "Subsidies of Products/Tech/Services",
+  "govtsupport_cuttax": "Tax Cuts",
+  "govtsupport_defftax": "Defferal of Tax Payments",
+  "govtsupport_bizadv": "Business Advisory Services",
+  "govtsupport_none": "No Government Support",
+  "govtsupport_other": "Other Government Support"
+};
+
+export const GOVT_SUPPORT_KEYS = [
+  "govtsupport_bizloan",
+  "govtsupport_deffloan",
+  "govtsupport_salsub",
+  "govtsupport_rentsub",
+  "govtsupport_rentdeff",
+  "govtsupport_techhelp",
+  "govtsupport_servsub",
+  "govtsupport_cuttax",
+  "govtsupport_defftax",
+  "govtsupport_bizadv",
+  "govtsupport_none",
+  "govtsupport_other"
+];
+

@@ -6,7 +6,7 @@ const mapStyle = {
   },
   title: {
     ...title,
-    marginBottom: "50px",
+    marginBottom: "20px",
     marginTop: "30px",
     minHeight: "32px",
     textDecoration: "none",

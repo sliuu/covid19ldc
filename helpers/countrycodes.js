@@ -182,7 +182,7 @@ export const COUNTRY_CODES = {
 	181: 'UA',
 	182: 'AE',
 	183: 'GB',
-	184: 'TN',
+	184: 'TZ',
 	185: 'US',
 	186: 'UY',
 	187: 'UZ',

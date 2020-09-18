@@ -13,7 +13,9 @@ import { REVCHANGE_CODES,
   CHALLENGES_CODES_SHORT,
   CHALLENGES_KEYS,
   TIME_OPEN_CODES,
-  FEMPERC_CODES } from "helpers/surveycodes.js";
+  FEMPERC_CODES,
+  GOVT_SUPPORT_CODES,
+  GOVT_SUPPORT_KEYS } from "helpers/surveycodes.js";
 import { COUNTRY_CODES } from "helpers/countrycodes.js";
 
 export default class Model {
@@ -59,8 +61,9 @@ export default class Model {
     var list = [];
     // Groups rows by business sector and expected
     // revenue changes.
+    //console.log(this.all_data[bizsector2])
     let groups = d3.groups(this.all_data,
-      d => BIZSECTOR_CODES[d.bizsector],
+      d => d.bizsector2,
       d => REVCHANGE_CODES[d.revchange]);
     for (let key1 of groups) {
       let obj = new Object();
@@ -69,6 +72,7 @@ export default class Model {
         obj[key2[0]] = key2[1].length;
       }
       list.push(obj);
+      console.log(obj.name);
     }
     // Sorts from largest negative decreases
     // to largest positive increases.
@@ -85,7 +89,7 @@ export default class Model {
       }
       return 0;
     });
-
+    console.log(list)
     return list;
   }
 
@@ -121,6 +125,28 @@ export default class Model {
     return dict;
   }
 
+  get_country_govtsupport_rollup() {
+    var dict = {};
+    for (let row of this.all_data) {
+      const country = COUNTRY_CODES[row.country];
+      if (!(country in dict)) {
+        dict[country] = {};
+      }
+      for (let support of GOVT_SUPPORT_KEYS) {
+        const support_name = GOVT_SUPPORT_CODES[support];
+        if (!(support_name in dict[country])) {
+          dict[country][support_name] = 0;
+        }
+        dict[country][support_name] += parseInt(row[support]);
+      }
+      if (!("total" in dict[country])) {
+        dict[country]["total"] = 0;
+      }
+      dict[country]["total"] += 1;
+    }
+    return dict;
+  }
+
   get_country_timeopen_rollup() {
     var dict = {};
     for (let row of this.all_data) {
@@ -133,6 +159,30 @@ export default class Model {
         dict[country][code_name] = 0;
       }
       dict[country][code_name] += 1;
+      if (!("total" in dict[country])) {
+        dict[country]["total"] = 0;
+      }
+      dict[country]["total"] += 1;
+    }
+    return dict;
+  }
+
+  get_country_revchange_rollup() {
+    var dict = {};
+    for (let row of this.all_data) {
+      const country = COUNTRY_CODES[row.country];
+      if (!(country in dict)) {
+        dict[country] = {};
+      }
+      for (let idx in REVCHANGE_CODES) {
+        const revchange = REVCHANGE_CODES[idx];
+        if (!(revchange in dict[country])) {
+          dict[country][revchange] = 0;
+        }
+      }
+      if (row.revchange in REVCHANGE_CODES) {
+        dict[country][REVCHANGE_CODES[row.revchange]] += 1;
+      }
       if (!("total" in dict[country])) {
         dict[country]["total"] = 0;
       }
