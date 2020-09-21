@@ -17,6 +17,8 @@ import {
   FEMPERC_CODES,
   GOVT_SUPPORT_CODES,
   GOVT_SUPPORT_KEYS,
+  OPCAPACITY_CODES,
+  LAYOFFBIN_CODES,
 } from "helpers/surveycodes.js";
 import { COUNTRY_CODES } from "helpers/countrycodes.js";
 
@@ -68,6 +70,24 @@ export default class Model {
       "numeploy",
       numemploy_counts_dict,
       NUMEMPLOY_CODES
+    );
+  }
+
+  get_opcapacity_counts() {
+    const opcapacity_counts_dict = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    return this._get_counts_list_for_feature(
+      "opcapacity",
+      opcapacity_counts_dict,
+      OPCAPACITY_CODES
+    );
+  }
+
+  get_layoffbin_counts() {
+    const layoffbin_counts_dict = { 1: 0, 2: 0, 3: 0 };
+    return this._get_counts_list_for_feature(
+      "layoffbin",
+      layoffbin_counts_dict,
+      LAYOFFBIN_CODES
     );
   }
 
