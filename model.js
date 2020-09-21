@@ -14,6 +14,7 @@ import {
   CHALLENGES_CODES_SHORT,
   CHALLENGES_KEYS,
   TIME_OPEN_CODES,
+  FEMOWN_CODES,
   FEMPERC_CODES,
   GOVT_SUPPORT_CODES,
   GOVT_SUPPORT_KEYS,
@@ -37,13 +38,11 @@ export default class Model {
 
   get_femown_counts() {
     const femown_counts = { 1: 0, 2: 0 };
-    this.all_data.map((object) => {
-      const number = object["femown"];
-      if (number in femown_counts) {
-        femown_counts[number] += 1;
-      }
-    });
-    return femown_counts;
+    return this._get_counts_list_for_feature(
+      "femown",
+      femown_counts,
+      FEMOWN_CODES
+    );
   }
 
   get_femperc_counts() {
@@ -248,17 +247,21 @@ export default class Model {
     return new Model(parsed_result.data);
   }
 
-  _get_counts_list_for_feature(
-    feature_name,
-    empty_counts_dict,
-    survey_codes_dict
-  ) {
+  _get_counts_dict_for_feature(feature_name, empty_counts_dict) {
     this.all_data.map((object) => {
       const number = object[feature_name];
       if (number in empty_counts_dict) {
         empty_counts_dict[number] += 1;
       }
     });
+  }
+
+  _get_counts_list_for_feature(
+    feature_name,
+    empty_counts_dict,
+    survey_codes_dict
+  ) {
+    this._get_counts_dict_for_feature(feature_name, empty_counts_dict);
 
     let feature_counts = [];
     for (let key in survey_codes_dict) {
