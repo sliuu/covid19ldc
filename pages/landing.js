@@ -19,7 +19,7 @@ import styles from "assets/jss/common/pages/landingPage.js";
 
 // Sections for this page
 import BusinessProfilesSection from "pages-sections/BusinessProfilesSection.js";
-import BusinessSectorsSection from "pages-sections/BusinessSectorsSection.js";
+import CovidImpactSection from "pages-sections/CovidImpactSection.js";
 import MapSection from "pages-sections/MapSection.js";
 import InfoSection from "pages-sections/InfoSection.js";
 
@@ -73,7 +73,11 @@ export default function LandingPage(props) {
             countryrevchange={props.country_x_revchange}
             countrygovtsupport={props.country_x_govtsupport}
           />
-          <BusinessSectorsSection data={props.revchange_x_bizsector} />
+          <CovidImpactSection
+            layoffbin_counts={props.layoffbin_counts}
+            opcapacity_counts={props.opcapacity_counts}
+            revchange_x_bizsector={props.revchange_x_bizsector}
+          />
         </div>
       </div>
       <Footer />
