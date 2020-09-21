@@ -51,6 +51,11 @@ export const NUMEMPLOY_CODES = {
   6: "More than 500",
 };
 
+export const FEMOWN_CODES = {
+  1: "Female Ownership",
+  2: "No Female Ownership",
+};
+
 export const FEMPERC_CODES = {
   1: "Less than half",
   2: "About half",
@@ -112,8 +117,8 @@ export const OPCAPACITY_CODES = {
 };
 
 export const LAYOFFBIN_CODES = {
-  1: "Yes",
-  2: "No",
+  1: "Layoffs",
+  2: "No Layoffs",
   3: "N/A",
 };
 
