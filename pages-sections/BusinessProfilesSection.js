@@ -81,7 +81,7 @@ const FemaleOwnedSubSection = (props) => {
         <Tab label="Percentage of Female Staff" {...a11yProps(1)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <PieChart key={3} data={props.femown_counts} />
+        <PieChart id={"femown_svg"} key={3} data={props.femown_counts} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <LollipopChart id={"femperc_svg"} key={4} data={props.femperc_counts} />
