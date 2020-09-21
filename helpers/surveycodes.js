@@ -103,6 +103,20 @@ export const CHALLENGES_KEYS = [
   "challenge_none",
 ];
 
+export const OPCAPACITY_CODES = {
+  1: "100%",
+  2: "75-99%",
+  3: "50-74%",
+  4: "25-29%",
+  5: "24% or less",
+};
+
+export const LAYOFFBIN_CODES = {
+  1: "Yes",
+  2: "No",
+  3: "N/A",
+};
+
 export const TIME_OPEN_CODES = {
   1: "< 2 Weeks",
   2: "2-4 Weeks",
