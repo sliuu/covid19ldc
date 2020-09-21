@@ -67,7 +67,7 @@ export default class Model {
   get_numemploy_counts() {
     const numemploy_counts_dict = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
     return this._get_counts_list_for_feature(
-      "numeploy",
+      "numemploy",
       numemploy_counts_dict,
       NUMEMPLOY_CODES
     );
@@ -254,7 +254,7 @@ export default class Model {
     survey_codes_dict
   ) {
     this.all_data.map((object) => {
-      const number = object["femperc"];
+      const number = object[feature_name];
       if (number in empty_counts_dict) {
         empty_counts_dict[number] += 1;
       }
