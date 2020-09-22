@@ -36,6 +36,8 @@ export default class MyApp extends App {
       femperc_counts: model.get_femperc_counts(),
       bizstatus_counts: model.get_bizstatus_counts(),
       numemploy_counts: model.get_numemploy_counts(),
+      layoffbin_counts: model.get_layoffbin_counts(),
+      opcapacity_counts: model.get_opcapacity_counts(),
       submission_dates: model.get_submission_dates(),
       revchange_x_bizsector: model.get_revchange_bizsector_rollup(),
       country_counts: model.get_country_counts(),
