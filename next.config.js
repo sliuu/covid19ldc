@@ -4,7 +4,7 @@ const withSass = require("@zeit/next-sass");
 const webpack = require("webpack");
 const path = require("path");
 
-const assetPrefix = process.env.NODE_ENV !== "production" ? "/covid19ldc" : "/covid19ldc";
+const assetPrefix = process.env.NODE_ENV !== "production" ? "" : "/covid19ldc";
 
 module.exports = withPlugins([[withSass], [withImages]], {
   webpack(config, options) {
