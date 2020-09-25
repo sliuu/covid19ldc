@@ -41,7 +41,7 @@ export default function Parallax(props) {
     image,
     small,
     color,
-    responsive
+    responsive,
   } = props;
   const classes = useStyles();
   const parallaxClasses = classNames({
@@ -49,7 +49,7 @@ export default function Parallax(props) {
     [classes.filter]: filter,
     [classes.small]: small,
     [classes.parallaxResponsive]: responsive,
-    [className]: className !== undefined
+    [className]: className !== undefined,
   });
   return (
     <div
@@ -57,7 +57,7 @@ export default function Parallax(props) {
       style={{
         ...style,
         backgroundColor: color,
-        transform: transform
+        transform: transform,
       }}
     >
       {children}
@@ -74,5 +74,5 @@ Parallax.propTypes = {
   color: PropTypes.string,
   small: PropTypes.bool,
   // this will add a min-height of 660px on small screens
-  responsive: PropTypes.bool
+  responsive: PropTypes.bool,
 };

@@ -49,5 +49,8 @@
     "react-swipeable-views": "0.13.9",
     "styled-components": "5.1.0",
     "webpack": "4.43.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
   }
 }

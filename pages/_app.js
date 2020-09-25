@@ -5,12 +5,12 @@ import Head from "next/head";
 import Router from "next/router";
 import PageChange from "components/PageChange/PageChange.js";
 
-import csv_string from 'final_data.csv';
-import Model from "model.js"
+import csv_string from "final_data.csv";
+import Model from "model.js";
 
 import "assets/scss/common.scss?v=1.1.0";
 
-Router.events.on("routeChangeStart", url => {
+Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
   ReactDOM.render(
@@ -30,19 +30,22 @@ Router.events.on("routeChangeError", () => {
 export default class MyApp extends App {
   static async getInitialProps() {
     const model = Model.from_csv_string(csv_string);
-    let pageProps = { all_data: model.get_all_data(),
-                      femown_counts: model.get_femown_counts(),
-                      femperc_counts: model.get_femperc_counts(),
-                      bizstatus_counts: model.get_bizstatus_counts(),
-                      numemploy_counts: model.get_numemploy_counts(),
-                      submission_dates: model.get_submission_dates(),
-                      revchange_x_bizsector: model.get_revchange_bizsector_rollup(),
-                      country_counts: model.get_country_counts(),
-                      country_x_challenges: model.get_country_challenges_rollup(),
-                      country_x_timeopen: model.get_country_timeopen_rollup(),
-                      country_x_revchange: model.get_country_revchange_rollup(),
-                      country_x_govtsupport: model.get_country_govtsupport_rollup(),
-                    };
+    let pageProps = {
+      all_data: model.get_all_data(),
+      femown_counts: model.get_femown_counts(),
+      femperc_counts: model.get_femperc_counts(),
+      bizstatus_counts: model.get_bizstatus_counts(),
+      numemploy_counts: model.get_numemploy_counts(),
+      layoffbin_counts: model.get_layoffbin_counts(),
+      opcapacity_counts: model.get_opcapacity_counts(),
+      submission_dates: model.get_submission_dates(),
+      revchange_x_bizsector: model.get_revchange_bizsector_rollup(),
+      country_counts: model.get_country_counts(),
+      country_x_challenges: model.get_country_challenges_rollup(),
+      country_x_timeopen: model.get_country_timeopen_rollup(),
+      country_x_revchange: model.get_country_revchange_rollup(),
+      country_x_govtsupport: model.get_country_govtsupport_rollup(),
+    };
     return { pageProps };
   }
   render() {

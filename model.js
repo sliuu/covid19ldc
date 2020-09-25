@@ -3,19 +3,24 @@
  */
 
 import * as d3 from "d3";
-import { nest } from 'd3-collection';
+import { nest } from "d3-collection";
 import Papa from "papaparse";
 
-import { REVCHANGE_CODES,
+import {
+  REVCHANGE_CODES,
   BIZSECTOR_CODES,
   BIZSTATUS_CODES,
   NUMEMPLOY_CODES,
   CHALLENGES_CODES_SHORT,
   CHALLENGES_KEYS,
   TIME_OPEN_CODES,
+  FEMOWN_CODES,
   FEMPERC_CODES,
   GOVT_SUPPORT_CODES,
-  GOVT_SUPPORT_KEYS } from "helpers/surveycodes.js";
+  GOVT_SUPPORT_KEYS,
+  OPCAPACITY_CODES,
+  LAYOFFBIN_CODES,
+} from "helpers/surveycodes.js";
 import { COUNTRY_CODES } from "helpers/countrycodes.js";
 
 export default class Model {
@@ -24,47 +29,76 @@ export default class Model {
   }
 
   get_all_data() {
-  	return this.all_data;
+    return this.all_data;
   }
 
   get_submission_dates() {
-  	return this.all_data.map(dict => dict["enddate"]);
+    return this.all_data.map((dict) => dict["enddate"]);
   }
 
   get_femown_counts() {
-  	const femown_counts = {"1": 0, "2": 0};
-  	this.all_data.map(object => {
-  	  const number = object["femown"];
-  	  if (number in femown_counts) {
-  	  	femown_counts[number] += 1;
-  	  }
-  	});
-  	return femown_counts;
+    const femown_counts = { 1: 0, 2: 0 };
+    return this._get_counts_list_for_feature(
+      "femown",
+      femown_counts,
+      FEMOWN_CODES
+    );
   }
 
   get_femperc_counts() {
-    const femperc_counts_dict = {"1": 0, "2": 0, "3": 0, "4": 0};
-    return this._get_counts_list_for_feature("femperc", femperc_counts_dict, FEMPERC_CODES);
+    const femperc_counts_dict = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    return this._get_counts_list_for_feature(
+      "femperc",
+      femperc_counts_dict,
+      FEMPERC_CODES
+    );
   }
 
   get_bizstatus_counts() {
-    const bizstatus_counts_dict = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "0": 0};
-    return this._get_counts_list_for_feature("bizstatus", bizstatus_counts_dict, BIZSTATUS_CODES);
+    const bizstatus_counts_dict = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 0: 0 };
+    return this._get_counts_list_for_feature(
+      "bizstatus",
+      bizstatus_counts_dict,
+      BIZSTATUS_CODES
+    );
   }
 
   get_numemploy_counts() {
-    const numemploy_counts_dict = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0};
-    return this._get_counts_list_for_feature("numeploy", numemploy_counts_dict, NUMEMPLOY_CODES);
+    const numemploy_counts_dict = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+    return this._get_counts_list_for_feature(
+      "numemploy",
+      numemploy_counts_dict,
+      NUMEMPLOY_CODES
+    );
+  }
+
+  get_opcapacity_counts() {
+    const opcapacity_counts_dict = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    return this._get_counts_list_for_feature(
+      "opcapacity",
+      opcapacity_counts_dict,
+      OPCAPACITY_CODES
+    );
+  }
+
+  get_layoffbin_counts() {
+    const layoffbin_counts_dict = { 1: 0, 2: 0, 3: 0 };
+    return this._get_counts_list_for_feature(
+      "layoffbin",
+      layoffbin_counts_dict,
+      LAYOFFBIN_CODES
+    );
   }
 
   get_revchange_bizsector_rollup() {
     var list = [];
     // Groups rows by business sector and expected
     // revenue changes.
-    //console.log(this.all_data[bizsector2])
-    let groups = d3.groups(this.all_data,
-      d => d.bizsector2,
-      d => REVCHANGE_CODES[d.revchange]);
+    let groups = d3.groups(
+      this.all_data,
+      (d) => d.bizsector2,
+      (d) => REVCHANGE_CODES[d.revchange]
+    );
     for (let key1 of groups) {
       let obj = new Object();
       obj.name = key1[0];
@@ -72,31 +106,44 @@ export default class Model {
         obj[key2[0]] = key2[1].length;
       }
       list.push(obj);
-      console.log(obj.name);
     }
     // Sorts from largest negative decreases
     // to largest positive increases.
-    list = list.sort(function(a, b) {
-      let a_sub = a['- >30%'] + a['- 10-30%'] + ('- <10%' in a ? a['- <10%'] : 0);
-      let b_sub = b['- >30%'] + b['- 10-30%'] + ('- <10%' in b ? b['- <10%'] : 0);
-      let a_all = a['- >30%'] + a['- 10-30%'] + ('- <10%' in a ? a['- <10%'] : 0) + a['Neutral'] + a['+ >30%'] + a['+ 10-30%'] + ('+ <10%' in a ? a['+ <10%'] : 0);
-      let b_all = b['- >30%'] + b['- 10-30%'] + ('- <10%' in b ? b['- <10%'] : 0) + b['Neutral'] + b['+ >30%'] + b['+ 10-30%'] + ('+ <10%' in b ? b['+ <10%'] : 0);
-      if ((a_sub / parseFloat(a_all)) > (b_sub / parseFloat(b_all))) {
+    list = list.sort(function (a, b) {
+      let a_sub =
+        a["- >30%"] + a["- 10-30%"] + ("- <10%" in a ? a["- <10%"] : 0);
+      let b_sub =
+        b["- >30%"] + b["- 10-30%"] + ("- <10%" in b ? b["- <10%"] : 0);
+      let a_all =
+        a["- >30%"] +
+        a["- 10-30%"] +
+        ("- <10%" in a ? a["- <10%"] : 0) +
+        a["Neutral"] +
+        a["+ >30%"] +
+        a["+ 10-30%"] +
+        ("+ <10%" in a ? a["+ <10%"] : 0);
+      let b_all =
+        b["- >30%"] +
+        b["- 10-30%"] +
+        ("- <10%" in b ? b["- <10%"] : 0) +
+        b["Neutral"] +
+        b["+ >30%"] +
+        b["+ 10-30%"] +
+        ("+ <10%" in b ? b["+ <10%"] : 0);
+      if (a_sub / parseFloat(a_all) > b_sub / parseFloat(b_all)) {
         return -1;
       }
-      if ((a_sub / parseFloat(a_all)) < (b_sub / parseFloat(b_all))) {
+      if (a_sub / parseFloat(a_all) < b_sub / parseFloat(b_all)) {
         return 1;
       }
       return 0;
     });
-    console.log(list)
     return list;
   }
 
   get_country_counts() {
     var counts = {};
-    let groups = d3.groups(this.all_data,
-      d => COUNTRY_CODES[d.country]);
+    let groups = d3.groups(this.all_data, (d) => COUNTRY_CODES[d.country]);
     for (let key of groups) {
       counts[key[0]] = key[1].length;
     }
@@ -195,25 +242,33 @@ export default class Model {
     const parsed_result = Papa.parse(csv_string, {
       header: true, // creates array of {head:value}
       dynamicTyping: false, // convert values to numbers if possible
-      skipEmptyLines: true
+      skipEmptyLines: true,
     });
-   	return new Model(parsed_result.data);
+    return new Model(parsed_result.data);
   }
 
-  _get_counts_list_for_feature(feature_name, empty_counts_dict, survey_codes_dict) {
-    this.all_data.map(object => {
-      const number = object["femperc"];
+  _get_counts_dict_for_feature(feature_name, empty_counts_dict) {
+    this.all_data.map((object) => {
+      const number = object[feature_name];
       if (number in empty_counts_dict) {
         empty_counts_dict[number] += 1;
       }
     });
+  }
+
+  _get_counts_list_for_feature(
+    feature_name,
+    empty_counts_dict,
+    survey_codes_dict
+  ) {
+    this._get_counts_dict_for_feature(feature_name, empty_counts_dict);
 
     let feature_counts = [];
     for (let key in survey_codes_dict) {
       feature_counts.push({
         name: survey_codes_dict[key],
-        value: empty_counts_dict[key.toString()]
-      })
+        value: empty_counts_dict[key.toString()],
+      });
     }
     return feature_counts;
   }

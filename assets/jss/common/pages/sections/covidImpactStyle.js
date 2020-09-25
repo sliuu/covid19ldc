@@ -1,20 +1,23 @@
 import { title } from "assets/jss/common.js";
 
-const productStyle = {
+const covidImpactStyle = {
   section: {
     padding: "70px 0",
-    textAlign: "center"
+    textAlign: "center",
   },
   title: {
     ...title,
     marginBottom: "1rem",
     marginTop: "30px",
     minHeight: "32px",
-    textDecoration: "none"
+    textDecoration: "none",
+  },
+  tabs: {
+    backgroundColor: "#33B2FF",
   },
   description: {
-    color: "#3c4858"
+    color: "#3c4858",
   },
 };
 
-export default productStyle;
+export default covidImpactStyle;
