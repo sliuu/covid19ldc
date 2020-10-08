@@ -10,8 +10,6 @@ import Model from "../model.js";
 
 import "../assets/scss/common.scss?v=1.1.0";
 
-//const csv_string = "fuck";
-
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
