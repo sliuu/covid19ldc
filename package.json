@@ -13,7 +13,7 @@
     "deploy": "NODE_ENV=production next build && next export -o docs && git checkout -- docs/.nojekyll && git add docs && git commit -m \"chore: regen site\""
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "repository": {
     "type": "git",
@@ -62,8 +62,6 @@
     "babel-loader": "^8.1.0",
     "babel-preset-react": "^6.24.1",
     "@babel/preset-env": "^7.9.0",
-    "@types/node": "^13.9.2",
-    "@types/react": "^16.9.23",
     "cross-env": "^7.0.2",
     "prettier": "^2.1.2"
   }
