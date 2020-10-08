@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
-import PageChange from "components/PageChange/PageChange.js";
+import PageChange from "../components/PageChange/PageChange.js";
 
-import csv_string from "final_data.csv";
-import Model from "model.js";
+import csv_string from "../final_data.csv";
+import Model from "../model.js";
 
-import "assets/scss/common.scss?v=1.1.0";
+import "../assets/scss/common.scss?v=1.1.0";
+
+//const csv_string = "fuck";
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);

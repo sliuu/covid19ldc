@@ -25,3 +25,8 @@ yarn-error.log*
 # package
 /dist
 /.next
+/nextjs
+/.firebase
+
+# debugging logs
+ui-debug.log

@@ -1,22 +1,21 @@
-import { title } from "assets/jss/common.js";
+import { title } from "../../../../../assets/jss/common.js";
 
 const infoSectionStyle = {
-	section: {
+  section: {
     padding: "70px 0",
-    textAlign: "center"
+    textAlign: "center",
   },
   title: {
     ...title,
     marginBottom: "1rem",
     marginTop: "30px",
     minHeight: "32px",
-    textDecoration: "none"
+    textDecoration: "none",
   },
   description: {
     color: "#263238",
-		textAlign: "left"
-  }
+    textAlign: "left",
+  },
 };
-
 
 export default infoSectionStyle;

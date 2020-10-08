@@ -7,21 +7,21 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import chroma from "chroma-js";
 // core components
-import Header from "components/Header/Header.js";
-import Footer from "components/Footer/Footer.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
-import Parallax from "components/Parallax/Parallax.js";
+import Header from "../components/Header/Header.js";
+import Footer from "../components/Footer/Footer.js";
+import GridContainer from "../components/Grid/GridContainer.js";
+import GridItem from "../components/Grid/GridItem.js";
+import Button from "../components/CustomButtons/Button.js";
+import HeaderLinks from "../components/Header/HeaderLinks.js";
+import Parallax from "../components/Parallax/Parallax.js";
 
-import styles from "assets/jss/common/pages/landingPage.js";
+import styles from "../assets/jss/common/pages/landingPage.js";
 
 // Sections for this page
-import BusinessProfilesSection from "pages-sections/BusinessProfilesSection.js";
-import CovidImpactSection from "pages-sections/CovidImpactSection.js";
-import MapSection from "pages-sections/MapSection.js";
-import InfoSection from "pages-sections/InfoSection.js";
+import BusinessProfilesSection from "../pages-sections/BusinessProfilesSection.js";
+import CovidImpactSection from "../pages-sections/CovidImpactSection.js";
+import MapSection from "../pages-sections/MapSection.js";
+import InfoSection from "../pages-sections/InfoSection.js";
 
 const dashboardRoutes = [];
 

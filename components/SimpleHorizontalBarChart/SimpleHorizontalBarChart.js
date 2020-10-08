@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import * as d3 from "d3";
 import { keys, entries } from "d3-collection";
-import { CHALLENGES_CODES_SHORT } from "helpers/surveycodes.js";
+import { CHALLENGES_CODES_SHORT } from "../../helpers/surveycodes.js";
 
 const formatValue = (x) => (isNaN(x) ? "N/A" : x.toLocaleString("en"));
 const formatPercent = d3.format(".1%");

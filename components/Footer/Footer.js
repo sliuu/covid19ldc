@@ -8,7 +8,7 @@ import classNames from "classnames";
 import { List, ListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import styles from "assets/jss/common/components/footerStyle.js";
+import styles from "../../assets/jss/common/components/footerStyle.js";
 
 const useStyles = makeStyles(styles);
 

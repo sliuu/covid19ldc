@@ -1,3 +1,5 @@
+"use strict";
+
 const withPlugins = require("next-compose-plugins");
 const withImages = require("next-images");
 const withSass = require("@zeit/next-sass");
@@ -17,4 +19,8 @@ module.exports = withPlugins([[withSass], [withImages]], {
   },
   assetPrefix: assetPrefix,
   basePath: assetPrefix,
+  distDir: "nextjs",
+  env: {
+    FIREBASE_PROJECT_ID: "ldccovid19-f2989",
+  },
 });

@@ -1,8 +1,8 @@
-import { title } from "assets/jss/common.js";
+import { title } from "../../../../../assets/jss/common.js";
 
 const mapStyle = {
   section: {
-    padding: "70px 0"
+    padding: "70px 0",
   },
   title: {
     ...title,
@@ -10,19 +10,19 @@ const mapStyle = {
     marginTop: "30px",
     minHeight: "32px",
     textDecoration: "none",
-    textAlign: "center"
+    textAlign: "center",
   },
   description: {
     color: "#3c4858",
-    textAlign: "center"
+    textAlign: "center",
   },
   textCenter: {
-    textAlign: "center"
+    textAlign: "center",
   },
   textArea: {
     marginRight: "15px",
-    marginLeft: "15px"
-  }
+    marginLeft: "15px",
+  },
 };
 
 export default mapStyle;

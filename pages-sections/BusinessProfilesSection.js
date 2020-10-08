@@ -8,14 +8,14 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import TabPanel from "components/TabPanel/TabPanel.js";
-import PieChart from "components/PieChart/PieChart.js";
-import LollipopChart from "components/LollipopChart/LollipopChart.js";
+import GridContainer from "../components/Grid/GridContainer.js";
+import GridItem from "../components/Grid/GridItem.js";
+import Button from "../components/CustomButtons/Button.js";
+import TabPanel from "../components/TabPanel/TabPanel.js";
+import PieChart from "../components/PieChart/PieChart.js";
+import LollipopChart from "../components/LollipopChart/LollipopChart.js";
 
-import styles from "assets/jss/common/pages/sections/businessProfilesStyle.js";
+import styles from "../assets/jss/common/pages/sections/businessProfilesStyle.js";
 
 const useStyles = makeStyles(styles);
 

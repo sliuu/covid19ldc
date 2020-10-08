@@ -14,9 +14,9 @@ import { Apps, CloudDownload } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 
 // core components
-import Button from "components/CustomButtons/Button.js";
+import Button from "../../components/CustomButtons/Button.js";
 
-import styles from "assets/jss/common/components/headerLinksStyle.js";
+import styles from "../../assets/jss/common/components/headerLinksStyle.js";
 
 const useStyles = makeStyles(styles);
 
@@ -24,8 +24,7 @@ export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
     <List className={classes.list}>
-      <ListItem className={classes.listItem}>
-      </ListItem>
+      <ListItem className={classes.listItem}></ListItem>
       <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-twitter"

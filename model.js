@@ -20,8 +20,8 @@ import {
   GOVT_SUPPORT_KEYS,
   OPCAPACITY_CODES,
   LAYOFFBIN_CODES,
-} from "helpers/surveycodes.js";
-import { COUNTRY_CODES } from "helpers/countrycodes.js";
+} from "./helpers/surveycodes.js";
+import { COUNTRY_CODES } from "./helpers/countrycodes.js";
 
 export default class Model {
   constructor(all_data) {

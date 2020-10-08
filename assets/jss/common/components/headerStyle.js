@@ -10,8 +10,8 @@ import {
   roseColor,
   transition,
   boxShadow,
-  drawerWidth
-} from "assets/jss/common.js";
+  drawerWidth,
+} from "../../../../assets/jss/common.js";
 
 const headerStyle = {
   appBar: {
@@ -30,15 +30,15 @@ const headerStyle = {
     flexFlow: "row nowrap",
     justifyContent: "flex-start",
     position: "relative",
-    zIndex: "unset"
+    zIndex: "unset",
   },
   absolute: {
     position: "absolute",
-    zIndex: "1100"
+    zIndex: "1100",
   },
   fixed: {
     position: "fixed",
-    zIndex: "1100"
+    zIndex: "1100",
   },
   container: {
     ...container,
@@ -47,16 +47,16 @@ const headerStyle = {
     alignItems: "center",
     justifyContent: "space-between",
     display: "flex",
-    flexWrap: "nowrap"
+    flexWrap: "nowrap",
   },
   flex: {
-    flex: 1
+    flex: 1,
   },
   title: {
     ...defaultFont,
     lineHeight: "30px",
     fontSize: "18px",
-    fontFamily: 'Rajdhani',
+    fontFamily: "Rajdhani",
     borderRadius: "3px",
     textTransform: "none",
     color: "inherit",
@@ -64,11 +64,11 @@ const headerStyle = {
     letterSpacing: "unset",
     "&:hover,&:focus": {
       color: "inherit",
-      background: "transparent"
-    }
+      background: "transparent",
+    },
   },
   appResponsive: {
-    margin: "20px 10px"
+    margin: "20px 10px",
   },
   primary: {
     backgroundColor: primaryColor,
@@ -76,7 +76,7 @@ const headerStyle = {
     boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px ${hexToRGBAlpha(
       primaryColor,
       0.46
-    )}`
+    )}`,
   },
   info: {
     backgroundColor: infoColor,
@@ -84,7 +84,7 @@ const headerStyle = {
     boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px ${hexToRGBAlpha(
       infoColor,
       0.46
-    )}`
+    )}`,
   },
   success: {
     backgroundColor: successColor,
@@ -92,7 +92,7 @@ const headerStyle = {
     boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px ${hexToRGBAlpha(
       successColor,
       0.46
-    )}`
+    )}`,
   },
   warning: {
     backgroundColor: warningColor,
@@ -100,7 +100,7 @@ const headerStyle = {
     boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px ${hexToRGBAlpha(
       warningColor,
       0.46
-    )}`
+    )}`,
   },
   danger: {
     backgroundColor: dangerColor,
@@ -108,7 +108,7 @@ const headerStyle = {
     boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px ${hexToRGBAlpha(
       dangerColor,
       0.46
-    )}`
+    )}`,
   },
   rose: {
     backgroundColor: roseColor,
@@ -116,19 +116,19 @@ const headerStyle = {
     boxShadow: `0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px ${hexToRGBAlpha(
       roseColor,
       0.46
-    )}`
+    )}`,
   },
   transparent: {
     backgroundColor: "transparent !important",
     boxShadow: "none",
     paddingTop: "25px",
-    color: "#FFFFFF"
+    color: "#FFFFFF",
   },
   dark: {
     color: "#FFFFFF",
     backgroundColor: "#212121 !important",
     boxShadow:
-      "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)"
+      "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)",
   },
   white: {
     border: "0",
@@ -137,7 +137,7 @@ const headerStyle = {
     color: "#555",
     backgroundColor: "#fff !important",
     boxShadow:
-      "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)"
+      "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
   },
   drawerPaper: {
     border: "none",
@@ -159,8 +159,8 @@ const headerStyle = {
     textAlign: "left",
     paddingRight: "0px",
     paddingLeft: "0",
-    ...transition
-  }
+    ...transition,
+  },
 };
 
 export default headerStyle;

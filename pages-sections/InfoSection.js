@@ -3,10 +3,10 @@ import classNames from "classnames";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import GridContainer from "../components/Grid/GridContainer.js";
+import GridItem from "../components/Grid/GridItem.js";
 
-import styles from "assets/jss/common/pages/sections/infoSectionStyle.js";
+import styles from "../assets/jss/common/pages/sections/infoSectionStyle.js";
 const useStyles = makeStyles(styles);
 
 const InfoSection = () => {

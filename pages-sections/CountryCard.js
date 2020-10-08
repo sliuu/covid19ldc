@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import SimpleHorizontalBarChart from "components/SimpleHorizontalBarChart/SimpleHorizontalBarChart.js";
+import GridContainer from "../components/Grid/GridContainer.js";
+import GridItem from "../components/Grid/GridItem.js";
+import SimpleHorizontalBarChart from "../components/SimpleHorizontalBarChart/SimpleHorizontalBarChart.js";
 
-import styles from "assets/jss/common/pages/sections/mapStyle.js";
+import styles from "../assets/jss/common/pages/sections/mapStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function CountryCard(props) {

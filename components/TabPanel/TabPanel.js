@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-import styles from "assets/jss/common/components/tabPanelStyle.js";
+import styles from "../../assets/jss/common/components/tabPanelStyle.js";
 
 const useStyles = makeStyles(styles);
 export default function TabPanel(props) {

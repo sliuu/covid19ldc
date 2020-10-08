@@ -1,4 +1,4 @@
-import { title } from "assets/jss/common.js";
+import { title } from "../../../../../assets/jss/common.js";
 
 const covidImpactStyle = {
   section: {
